@@ -41,6 +41,7 @@ dev_dependencies:
 
   rename: ^3.1.0
   flutter_lints: ^6.0.0
+  flutter_native_splash: ^2.4.7
   flutter_launcher_icons: ^0.14.4
 
 
@@ -60,3 +61,14 @@ flutter_launcher_icons:
   remove_alpha_ios: true
   adaptive_icon_background: "#123C36"
   image_path: "assets/images/appLogo.png"
+
+flutter_native_splash:
+  color: "#123C36"
+  image: assets/images/splashLogo.png
+  android: true
+  ios: true
+  web: false
+  android_12:
+    color: "#123C36"
+    image: assets/images/splashLogo.png
+  fullscreen: true
