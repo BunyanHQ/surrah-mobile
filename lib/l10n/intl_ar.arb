@@ -1,1 +1,31 @@
-{}
+{
+  "@@locale": "ar",
+
+
+  "appName": "صُرّة",
+  "@appName": {},
+
+
+  "onBoardingTitle1": "تتبع كل دولار",
+  "@onBoardingTitle1": {},
+  "onBoardingTitle2": "بناء عادات أفضل",
+  "@onBoardingTitle2": {},
+  "onBoardingTitle3": "تحقيق أهدافك",
+  "@onBoardingTitle3": {},
+  "onBoardingTitle4": "البقاء في السيطرة",
+  "@onBoardingTitle4": {},
+  "onBoardingBody1": "تتبع دخلك ونفقاتك بسهولة.",
+  "@onBoardingBody1": {},
+  "onBoardingBody2": "بناء عادات مالية أفضل لحياة أفضل.",
+  "@onBoardingBody2": {},
+  "onBoardingBody3": "وفر المال وحقق أهدافك المالية.",
+  "@onBoardingBody3": {},
+  "onBoardingBody4": "خذ السيطرة على مالك ومستقبلك.",
+  "@onBoardingBody4": {},
+  "skipButton": "تخطي",
+  "@skipButton": {},
+  "nextButton": "التالي",
+  "@nextButton": {},
+  "getStartedButton": "البدء",
+  "@getStartedButton": {}
+}

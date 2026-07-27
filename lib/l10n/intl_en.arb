@@ -1,1 +1,32 @@
-{}
+{
+  "@@locale": "en",
+
+
+  "appName": "Surrah",
+  "@appName": {},
+
+
+  "onBoardingTitle1": "Track Every Dollar",
+  "@onBoardingTitle1": {},
+  "onBoardingTitle2": "Build Better Habits",
+  "@onBoardingTitle2": {},
+  "onBoardingTitle3": "Achieve Your Goals",
+  "@onBoardingTitle3": {},
+  "onBoardingTitle4": "Stay In Control",
+  "@onBoardingTitle4": {},
+  "onBoardingBody1": "Easily track your income and expenses.",
+  "@onBoardingBody1": {},
+  "onBoardingBody2": "Build better financial habits for a better life.",
+  "@onBoardingBody2": {},
+  "onBoardingBody3": "Save money and achieve your financial goals.",
+  "@onBoardingBody3": {},
+  "onBoardingBody4": "Take control of your finances and future.",
+  "@onBoardingBody4": {},
+  "skipButton": "Skip",
+  "@skipButton": {},
+  "nextButton": "Next",
+  "@nextButton": {},
+  "getStartedButton": "Get Started",
+  "@getStartedButton": {}
+
+}

@@ -21,5 +21,26 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "appName": MessageLookupByLibrary.simpleMessage("Surrah"),
+        "getStartedButton": MessageLookupByLibrary.simpleMessage("Get Started"),
+        "nextButton": MessageLookupByLibrary.simpleMessage("Next"),
+        "onBoardingBody1": MessageLookupByLibrary.simpleMessage(
+            "Easily track your income and expenses."),
+        "onBoardingBody2": MessageLookupByLibrary.simpleMessage(
+            "Build better financial habits for a better life."),
+        "onBoardingBody3": MessageLookupByLibrary.simpleMessage(
+            "Save money and achieve your financial goals."),
+        "onBoardingBody4": MessageLookupByLibrary.simpleMessage(
+            "Take control of your finances and future."),
+        "onBoardingTitle1":
+            MessageLookupByLibrary.simpleMessage("Track Every Dollar"),
+        "onBoardingTitle2":
+            MessageLookupByLibrary.simpleMessage("Build Better Habits"),
+        "onBoardingTitle3":
+            MessageLookupByLibrary.simpleMessage("Achieve Your Goals"),
+        "onBoardingTitle4":
+            MessageLookupByLibrary.simpleMessage("Stay In Control"),
+        "skipButton": MessageLookupByLibrary.simpleMessage("Skip")
+      };
 }
