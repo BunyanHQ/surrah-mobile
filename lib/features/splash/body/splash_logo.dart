@@ -1,5 +1,5 @@
 import 'dart:ui';
-import '../../../core/assets.dart';
+import '../../../const/assets.dart';
 import 'package:flutter/material.dart';
 
 class SplashLogo extends StatefulWidget {

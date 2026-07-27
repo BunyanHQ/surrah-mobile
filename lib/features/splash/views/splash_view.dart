@@ -1,7 +1,9 @@
 import 'dart:async';
 import '../body/splash_logo.dart';
-import '../../../core/assets.dart';
+import '../../../const/assets.dart';
 import 'package:flutter/material.dart';
+import '../../../core/utils/nav_to.dart';
+import '../../onBoarding/pages/views/on_boarding_view.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -16,7 +18,7 @@ class _SplashViewState extends State<SplashView> {
     super.initState();
 
     Timer(const Duration(seconds: 2), () {
-      // Navigate
+      NavTo.pushReplacement(context: context, nextPage: OnBoardingView());
     });
   }
 
