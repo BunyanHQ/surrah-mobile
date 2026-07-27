@@ -1,5 +1,6 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
+import '../../../../generated/l10n.dart';
 import '../../models/on_boarding_model.dart';
 import '../../../../core/widgets/custom_text.dart';
 import '../../../../core/widgets/custom_button.dart';
@@ -20,6 +21,7 @@ class OnBoardingBody extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        _Skip(pageController: pageController),
         Spacer(flex: 3),
         _Image(imagePath: onBoardingModel.image),
         Spacer(flex: 2),
@@ -39,6 +41,28 @@ class OnBoardingBody extends StatelessWidget {
   }
 }
 
+class _Skip extends StatelessWidget {
+  final PageController pageController;
+  const _Skip({required this.pageController});
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: AlignmentDirectional.topEnd,
+      child: TextButton(
+        onPressed: () => pageController.jumpToPage(
+          onBoardingData(context: context).length - 1,
+        ),
+        child: CustomText(
+          text: S.of(context).skipButton,
+          size: 16.sp,
+          type: Type.overMedium,
+        ),
+      ),
+    );
+  }
+}
+
 class _Image extends StatelessWidget {
   final String imagePath;
   const _Image({required this.imagePath});
@@ -48,7 +72,7 @@ class _Image extends StatelessWidget {
     var size = MediaQuery.of(context).size;
     return SvgPicture.asset(
       imagePath,
-      width: size.width * 0.8,
+      width: size.width,
       height: size.height * 0.5,
     );
   }
@@ -112,6 +136,7 @@ class _Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomButton(
+      margin: EdgeInsets.symmetric(horizontal: 20.w , vertical: 10.h),
       onPressed: () {
         if (onBoardingModel.id == onBoardingData(context: context).length) {
           // Nav To Home Page

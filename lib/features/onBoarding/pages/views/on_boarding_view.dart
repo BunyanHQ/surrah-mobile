@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/on_boarding_body.dart';
 import '../../models/on_boarding_model.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({super.key});
@@ -28,8 +27,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
         controller: pageController,
         itemCount: data.length,
         itemBuilder: (context, index) {
-          return Padding(
-            padding: EdgeInsets.all(20.h),
+          return SafeArea(
             child: OnBoardingBody(
               onBoardingModel: data[index],
               pageController: pageController,

@@ -12,6 +12,7 @@ class CustomButton extends StatelessWidget {
   final bool isOutlined;
   final VoidCallback onPressed;
   final Color? backgroundColor;
+  final EdgeInsetsGeometry? margin;
   const CustomButton({
     super.key,
     this.height = 50,
@@ -23,6 +24,7 @@ class CustomButton extends StatelessWidget {
     this.isOutlined = false,
     this.color = Colors.white,
     this.backgroundColor,
+    this.margin,
   });
 
   @override
@@ -34,6 +36,7 @@ class CustomButton extends StatelessWidget {
       child: Container(
         width: width.w,
         height: height.h,
+        margin: margin,
         decoration: BoxDecoration(
           color: isOutlined ? Colors.transparent : bgColor,
           border: Border.all(
