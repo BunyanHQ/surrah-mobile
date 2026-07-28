@@ -1,4 +1,5 @@
 
+import 'core/services/aupabase_service.dart';
 import 'generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'features/splash/views/splash_view.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
+  SupabaseService.instance.init();
   runApp(const MyApp());
 }
 
