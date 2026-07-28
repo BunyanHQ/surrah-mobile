@@ -1,10 +1,12 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import '../../../../generated/l10n.dart';
+import '../../../../core/utils/nav_to.dart';
 import '../../models/on_boarding_model.dart';
 import '../../../../core/widgets/custom_text.dart';
 import '../../../../core/widgets/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../auth/presentation/pages/views/login_view.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardingBody extends StatelessWidget {
@@ -136,10 +138,10 @@ class _Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomButton(
-      margin: EdgeInsets.symmetric(horizontal: 20.w , vertical: 10.h),
+      margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
       onPressed: () {
         if (onBoardingModel.id == onBoardingData(context: context).length) {
-          // Nav To Home Page
+          NavTo.pushReplacement(context: context, nextPage: const LoginView());
         } else {
           pageController.nextPage(
             duration: const Duration(milliseconds: 500),

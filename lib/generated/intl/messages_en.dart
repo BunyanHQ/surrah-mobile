@@ -23,7 +23,18 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appName": MessageLookupByLibrary.simpleMessage("Surrah"),
+        "dontHaveAnAccount":
+            MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
+        "emailAddress": MessageLookupByLibrary.simpleMessage("Email Address"),
+        "emailAddressHint":
+            MessageLookupByLibrary.simpleMessage("john.doe@example.com"),
+        "forgetPassword":
+            MessageLookupByLibrary.simpleMessage("Forget Password?"),
         "getStartedButton": MessageLookupByLibrary.simpleMessage("Get Started"),
+        "loginButton": MessageLookupByLibrary.simpleMessage("Login"),
+        "loginSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Sign in to Continue to your account and enjoy our services"),
+        "loginTitle": MessageLookupByLibrary.simpleMessage("Welcome Back👋"),
         "nextButton": MessageLookupByLibrary.simpleMessage("Next"),
         "onBoardingBody1": MessageLookupByLibrary.simpleMessage(
             "Easily track your income and expenses."),
@@ -41,6 +52,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Achieve Your Goals"),
         "onBoardingTitle4":
             MessageLookupByLibrary.simpleMessage("Stay In Control"),
+        "orContinueWith":
+            MessageLookupByLibrary.simpleMessage("Or continue with"),
+        "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "passwordHint": MessageLookupByLibrary.simpleMessage(
+            "8+ characters with upper, lower, number & symbol"),
+        "signInWithFacebook":
+            MessageLookupByLibrary.simpleMessage("Sign in with Facebook"),
+        "signInWithGoogle":
+            MessageLookupByLibrary.simpleMessage("Sign in with Google"),
+        "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "skipButton": MessageLookupByLibrary.simpleMessage("Skip")
       };
 }

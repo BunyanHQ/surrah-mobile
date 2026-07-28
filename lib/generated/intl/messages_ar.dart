@@ -23,7 +23,19 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "appName": MessageLookupByLibrary.simpleMessage("صُرّة"),
+        "dontHaveAnAccount":
+            MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
+        "emailAddress":
+            MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
+        "emailAddressHint":
+            MessageLookupByLibrary.simpleMessage("john.doe@example.com"),
+        "forgetPassword":
+            MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
         "getStartedButton": MessageLookupByLibrary.simpleMessage("البدء"),
+        "loginButton": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+        "loginSubtitle": MessageLookupByLibrary.simpleMessage(
+            "قم بتسجيل الدخول لمواصلة إلى حسابك والاستمتاع بخدماتنا"),
+        "loginTitle": MessageLookupByLibrary.simpleMessage("مرحبًا بعودتك👋"),
         "nextButton": MessageLookupByLibrary.simpleMessage("التالي"),
         "onBoardingBody1":
             MessageLookupByLibrary.simpleMessage("تتبع دخلك ونفقاتك بسهولة."),
@@ -41,6 +53,16 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تحقيق أهدافك"),
         "onBoardingTitle4":
             MessageLookupByLibrary.simpleMessage("البقاء في السيطرة"),
+        "orContinueWith":
+            MessageLookupByLibrary.simpleMessage("أو المتابعة مع"),
+        "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+        "passwordHint": MessageLookupByLibrary.simpleMessage(
+            "8+ أحرف مع أحرف كبيرة و صغيرة، رقم & رمز"),
+        "signInWithFacebook": MessageLookupByLibrary.simpleMessage(
+            "تسجيل الدخول باستخدام فيسبوك"),
+        "signInWithGoogle":
+            MessageLookupByLibrary.simpleMessage("تسجيل الدخول باستخدام جوجل"),
+        "signUp": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
         "skipButton": MessageLookupByLibrary.simpleMessage("تخطي")
       };
 }
