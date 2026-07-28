@@ -22,7 +22,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "alreadyHaveAnAccount":
+            MessageLookupByLibrary.simpleMessage("هل لديك حساب بالفعل?"),
         "appName": MessageLookupByLibrary.simpleMessage("صُرّة"),
+        "confirmPassword":
+            MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
+        "confirmPasswordHint":
+            MessageLookupByLibrary.simpleMessage("أعد إدخال كلمة المرور"),
         "dontHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
         "emailAddress":
@@ -31,6 +37,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("john.doe@example.com"),
         "forgetPassword":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
+        "fullName": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
+        "fullNameHint": MessageLookupByLibrary.simpleMessage("مثال: جون دو"),
         "getStartedButton": MessageLookupByLibrary.simpleMessage("البدء"),
         "loginButton": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "loginSubtitle": MessageLookupByLibrary.simpleMessage(
@@ -58,6 +66,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "passwordHint": MessageLookupByLibrary.simpleMessage(
             "8+ أحرف مع أحرف كبيرة و صغيرة، رقم & رمز"),
+        "registerButton": MessageLookupByLibrary.simpleMessage("تسجيل"),
+        "registerSubtitle": MessageLookupByLibrary.simpleMessage(
+            "سجل الآن للبدء والاستمتاع بخدماتنا"),
+        "registerTitle": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+        "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "signInWithFacebook": MessageLookupByLibrary.simpleMessage(
             "تسجيل الدخول باستخدام فيسبوك"),
         "signInWithGoogle":

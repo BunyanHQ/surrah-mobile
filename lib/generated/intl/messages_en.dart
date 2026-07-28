@@ -22,7 +22,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "alreadyHaveAnAccount":
+            MessageLookupByLibrary.simpleMessage("Already have an account?"),
         "appName": MessageLookupByLibrary.simpleMessage("Surrah"),
+        "confirmPassword":
+            MessageLookupByLibrary.simpleMessage("Confirm Password"),
+        "confirmPasswordHint":
+            MessageLookupByLibrary.simpleMessage("Re-enter your password"),
         "dontHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
         "emailAddress": MessageLookupByLibrary.simpleMessage("Email Address"),
@@ -30,6 +36,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("john.doe@example.com"),
         "forgetPassword":
             MessageLookupByLibrary.simpleMessage("Forget Password?"),
+        "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
+        "fullNameHint":
+            MessageLookupByLibrary.simpleMessage("Example: John Doe"),
         "getStartedButton": MessageLookupByLibrary.simpleMessage("Get Started"),
         "loginButton": MessageLookupByLibrary.simpleMessage("Login"),
         "loginSubtitle": MessageLookupByLibrary.simpleMessage(
@@ -57,6 +66,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordHint": MessageLookupByLibrary.simpleMessage(
             "8+ characters with upper, lower, number & symbol"),
+        "registerButton": MessageLookupByLibrary.simpleMessage("Register"),
+        "registerSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Sign up to get started and enjoy our services"),
+        "registerTitle":
+            MessageLookupByLibrary.simpleMessage("Create an Account"),
+        "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
         "signInWithFacebook":
             MessageLookupByLibrary.simpleMessage("Sign in with Facebook"),
         "signInWithGoogle":

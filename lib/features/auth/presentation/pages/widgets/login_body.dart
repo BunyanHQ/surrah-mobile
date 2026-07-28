@@ -1,16 +1,17 @@
-import 'package:surrah/core/widgets/custom_text.dart';
 
-import '../../../../../const/assets.dart';
-import '../../../../../core/utils/styles.dart';
-import '../../../../../core/widgets/custom_button.dart';
-import '../../../../../generated/l10n.dart';
 import 'auth_item.dart';
 import 'auth_title.dart';
-import 'package:flutter/material.dart';
-import '../../../../../core/utils/validators.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'auth_bottom.dart';
 import 'social_media_button.dart';
+import '../views/register_view.dart';
+import 'package:flutter/material.dart';
+import '../../../../../const/assets.dart';
+import '../../../../../generated/l10n.dart';
+import '../../../../../core/utils/styles.dart';
+import '../../../../../core/utils/validators.dart';
+import '../../../../../core/widgets/custom_text.dart';
+import '../../../../../core/widgets/custom_button.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginBody extends StatelessWidget {
   const LoginBody({super.key});
@@ -50,7 +51,11 @@ class LoginBody extends StatelessWidget {
           onPressed: () {},
         ),
         SizedBox(height: 3.h),
-        _DontHaveAnyAccount(),
+        AuthBottom(
+          text: s.alreadyHaveAnAccount,
+          linkText: s.signIn,
+          navigateScreen: const RegisterView(),
+        ),
       ],
     );
   }
@@ -89,38 +94,9 @@ class _OrContinueWith extends StatelessWidget {
         Expanded(
           child: Divider(color: theme.dividerColor, thickness: 1.h),
         ),
-        CustomText(
-          text: s.orContinueWith,
-          size: 16.sp,
-          type: Type.overMedium,
-        ),
+        CustomText(text: s.orContinueWith, size: 16.sp, type: Type.overMedium),
         Expanded(
           child: Divider(color: theme.dividerColor, thickness: 1.h),
-        ),
-      ],
-    );
-  }
-}
-
-class _DontHaveAnyAccount extends StatelessWidget {
-  const _DontHaveAnyAccount();
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        CustomText(
-          text: S.of(context).dontHaveAnAccount,
-          size: 16.sp,
-          type: Type.overMedium,
-        ),
-        SizedBox(width: 5.w),
-        CustomText(
-          text: S.of(context).signUp,
-          size: 16.sp,
-          type: Type.overMedium,
-          color: Styles.linkColor,
         ),
       ],
     );

@@ -55,5 +55,26 @@
   "dontHaveAnAccount": "Don't have an account?",
   "@dontHaveAnAccount": {},
   "signUp": "Sign Up",
-  "@signUp": {}
+  "@signUp": {},
+
+
+  "registerTitle": "Create an Account",
+  "@registerTitle": {},
+  "registerSubtitle": "Sign up to get started and enjoy our services",
+  "@registerSubtitle": {},
+  "fullName": "Full Name",
+  "@fullName": {},
+  "fullNameHint": "Example: John Doe",
+  "@fullNameHint": {},
+  "confirmPassword": "Confirm Password",
+  "@confirmPassword": {},
+  "confirmPasswordHint": "Re-enter your password",
+  "@confirmPasswordHint": {},
+  "registerButton": "Register",
+  "@registerButton": {},
+  "alreadyHaveAnAccount": "Already have an account?",
+  "@alreadyHaveAnAccount": {},
+  "signIn": "Sign In",
+  "@signIn": {}
+
 }
