@@ -1,16 +1,10 @@
-
-import 'auth_item.dart';
-import 'auth_title.dart';
-import 'auth_bottom.dart';
-import 'social_media_button.dart';
+import 'auth_form.dart';
 import '../views/register_view.dart';
 import 'package:flutter/material.dart';
 import '../../../../../const/assets.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../../../core/utils/styles.dart';
-import '../../../../../core/utils/validators.dart';
+import '../../../../../core/utils/nav_to.dart';
 import '../../../../../core/widgets/custom_text.dart';
-import '../../../../../core/widgets/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginBody extends StatelessWidget {
@@ -19,62 +13,24 @@ class LoginBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var s = S.of(context);
-    return Column(
-      spacing: 15.h,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        AuthTitle(title: s.loginTitle, description: s.loginSubtitle),
-        SizedBox(height: 10.h),
-        AuthItem(
-          title: s.emailAddress,
-          hint: s.emailAddressHint,
-          validator: Validators.email,
-          prefixIcon: Icons.email_outlined,
-          keyboardType: TextInputType.emailAddress,
-        ),
-        AuthItem(
-          title: s.password,
-          hint: s.passwordHint,
-          validator: Validators.password,
-          prefixIcon: Icons.lock_outline,
-          suffixIcon: Icons.visibility_off_outlined,
-          suffixTap: () {},
-          keyboardType: TextInputType.visiblePassword,
-        ),
-        _ForgetPassword(),
-        SizedBox(height: 1.h),
-        CustomButton(label: s.loginButton, onPressed: () {}),
-        _OrContinueWith(),
-        SocialMediaButton(
-          title: s.signInWithGoogle,
-          imagePath: Assets.googleLogo,
-          onPressed: () {},
-        ),
-        SizedBox(height: 3.h),
-        AuthBottom(
-          text: s.alreadyHaveAnAccount,
-          linkText: s.signIn,
-          navigateScreen: const RegisterView(),
-        ),
-      ],
-    );
-  }
-}
-
-class _ForgetPassword extends StatelessWidget {
-  const _ForgetPassword();
-
-  @override
-  Widget build(BuildContext context) {
-    var s = S.of(context);
-    return Align(
-      alignment: AlignmentDirectional.centerEnd,
-      child: CustomText(
-        text: s.forgetPassword,
-        size: 16.sp,
-        type: Type.overMedium,
-        color: Styles.linkColor,
+    return AuthForm(
+      title: s.loginTitle,
+      buttonTitle: s.loginButton,
+      description: s.loginSubtitle,
+      forgetPasswordScreen: Placeholder(),
+      emailController: TextEditingController(),
+      passwordController: TextEditingController(),
+      onButtonPressed: () {},
+      bottomWidget: Column(
+        spacing: 10.h,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: const [_OrContinueWith(), _GoogleButton(isLoading: false)],
       ),
+      buttonLoading: false,
+      bottomLinkText: s.signUp,
+      bottomText: s.dontHaveAnAccount,
+      bottomOnTap: () => NavTo.push(context: context, nextPage: RegisterView()),
     );
   }
 }
@@ -99,6 +55,37 @@ class _OrContinueWith extends StatelessWidget {
           child: Divider(color: theme.dividerColor, thickness: 1.h),
         ),
       ],
+    );
+  }
+}
+
+class _GoogleButton extends StatelessWidget {
+  final bool isLoading;
+  const _GoogleButton({required this.isLoading});
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {},
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.r)),
+        padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
+      ),
+      child: isLoading
+          ? CircularProgressIndicator()
+          : Row(
+              spacing: 8.w,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CustomText(
+                  text: S.of(context).signInWithGoogle,
+                  size: 18.sp,
+                  type: Type.overMedium,
+                ),
+                Image.asset(Assets.googleLogo, width: 28.w, height: 30.h),
+              ],
+            ),
     );
   }
 }

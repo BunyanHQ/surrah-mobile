@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomButton extends StatelessWidget {
+  final bool isLoading;
   final double width;
   final double height;
   final double borderRadius;
@@ -15,6 +16,7 @@ class CustomButton extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   const CustomButton({
     super.key,
+    this.isLoading = false,
     this.height = 50,
     this.borderRadius = 6,
     this.width = double.infinity,
@@ -30,7 +32,9 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var bgColor = backgroundColor ?? Theme.of(context).primaryColor;
-    var itemColor = isOutlined ? bgColor : Theme.of(context).scaffoldBackgroundColor;
+    var itemColor = isOutlined
+        ? bgColor
+        : Theme.of(context).scaffoldBackgroundColor;
     return GestureDetector(
       onTap: onPressed,
       child: Container(
@@ -45,14 +49,30 @@ class CustomButton extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(borderRadius.r),
         ),
-        child: Row(
-          spacing: 10.w,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (icon != null) Icon(icon, size: 22.sp, color: itemColor),
-            CustomText(text: label, size: 18.sp, color: itemColor , type: Type.overMedium),
-          ],
-        ),
+        child: isLoading
+            ? Center(
+                child: SizedBox(
+                  width: 24.w,
+                  height: 24.h,
+                  child: CircularProgressIndicator(
+                    color: itemColor,
+                    strokeWidth: 2.w,
+                  ),
+                ),
+              )
+            : Row(
+                spacing: 10.w,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (icon != null) Icon(icon, size: 22.sp, color: itemColor),
+                  CustomText(
+                    text: label,
+                    size: 18.sp,
+                    color: itemColor,
+                    type: Type.overMedium,
+                  ),
+                ],
+              ),
       ),
     );
   }
