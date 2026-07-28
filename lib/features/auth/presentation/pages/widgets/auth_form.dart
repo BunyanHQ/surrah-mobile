@@ -13,6 +13,9 @@ class AuthForm extends StatelessWidget {
   final String title;
   final String description;
 
+  // Top
+  final Widget? topWidget;
+
   // Login
   final bool? showPassword;
   final Function()? passwordSuffixTap;
@@ -39,6 +42,7 @@ class AuthForm extends StatelessWidget {
 
   const AuthForm({
     super.key,
+    this.topWidget,
     required this.title,
     required this.description,
     this.emailController,
@@ -66,6 +70,7 @@ class AuthForm extends StatelessWidget {
         spacing: 11.h,
         mainAxisSize: MainAxisSize.min,
         children: [
+          if (topWidget != null) SafeArea(child: topWidget!),
           SizedBox(height: MediaQuery.of(context).size.height * 0.1),
           _Title(title: title, description: description),
           SizedBox(height: 5.h),
@@ -99,14 +104,16 @@ class AuthForm extends StatelessWidget {
           ),
           ?bottomWidget,
           SizedBox(height: 10.h),
-          if (bottomText != null && bottomLinkText != null && bottomOnTap != null)
+          if (bottomText != null &&
+              bottomLinkText != null &&
+              bottomOnTap != null)
             _Bottom(
               text: bottomText!,
               linkText: bottomLinkText!,
               onTap: bottomOnTap!,
             ),
         ],
-      )
+      ),
     );
   }
 }
