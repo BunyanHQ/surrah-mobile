@@ -300,6 +300,16 @@ class S {
     );
   }
 
+  /// `Login Success`
+  String get loginSuccess {
+    return Intl.message(
+      'Login Success',
+      name: 'loginSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Create an Account`
   String get registerTitle {
     return Intl.message(
@@ -360,6 +370,26 @@ class S {
     );
   }
 
+  /// `Phone Number`
+  String get phoneNumber {
+    return Intl.message(
+      'Phone Number',
+      name: 'phoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Example: +1 123 456 7890`
+  String get phoneNumberHint {
+    return Intl.message(
+      'Example: +1 123 456 7890',
+      name: 'phoneNumberHint',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Confirm Password`
   String get confirmPassword {
     return Intl.message(
@@ -405,6 +435,16 @@ class S {
     return Intl.message(
       'Sign In',
       name: 'signIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register Success`
+  String get registerSuccess {
+    return Intl.message(
+      'Register Success',
+      name: 'registerSuccess',
       desc: '',
       args: [],
     );

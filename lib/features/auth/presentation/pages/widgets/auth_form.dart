@@ -32,6 +32,7 @@ class AuthForm extends StatelessWidget {
   final Function()? confirmPasswordSuffixTap;
   final TextEditingController? firstNameController;
   final TextEditingController? lastNameController;
+  final TextEditingController? phoneController;
   final TextEditingController? confirmPasswordController;
 
   // Button
@@ -59,6 +60,7 @@ class AuthForm extends StatelessWidget {
     this.passwordController,
     this.firstNameController,
     this.lastNameController,
+    this.phoneController,
     this.showConfirmPassword,
     this.confirmPasswordSuffixTap,
     this.confirmPasswordController,
@@ -85,10 +87,13 @@ class AuthForm extends StatelessWidget {
             SizedBox(height: MediaQuery.of(context).size.height * 0.1),
             _Title(title: title, description: description),
             SizedBox(height: 5.h),
-            if (firstNameController != null && lastNameController != null) _Name(
-              firstNameController: firstNameController!,
-              lastNameController: lastNameController!,
-            ),
+            if (firstNameController != null && lastNameController != null)
+              _Name(
+                firstNameController: firstNameController!,
+                lastNameController: lastNameController!,
+              ),
+            if (phoneController != null)
+              _PhoneNumber(controller: phoneController!),
             if (emailController != null) _Email(controller: emailController!),
             if (passwordController != null)
               _Password(
@@ -165,6 +170,7 @@ class _Title extends StatelessWidget {
 class _Item extends StatelessWidget {
   final String title;
   final String hint;
+  final bool? obscureText;
   final IconData prefixIcon;
   final IconData? suffixIcon;
   final Function()? suffixTap;
@@ -178,6 +184,7 @@ class _Item extends StatelessWidget {
     required this.prefixIcon,
     this.suffixIcon,
     this.suffixTap,
+    this.obscureText,
     required this.keyboardType,
     required this.validator,
     required this.controller,
@@ -194,6 +201,7 @@ class _Item extends StatelessWidget {
         CustomText(text: title, size: 16.sp, type: Type.overMedium),
         SizedBox(height: 10.h),
         CustomTextFormField(
+          obscureText: obscureText ?? false,
           hintText: hint,
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
@@ -201,7 +209,7 @@ class _Item extends StatelessWidget {
           onSuffixIconTap: suffixTap,
           keyboardType: keyboardType,
           validator: (value) => validator(value),
-         // passwordController: passwordController,
+          // passwordController: passwordController,
         ),
       ],
     );
@@ -229,7 +237,7 @@ class _Name extends StatelessWidget {
             hint: S.of(context).firstNameHint,
             prefixIcon: Icons.person_outline,
             keyboardType: TextInputType.name,
-          )
+          ),
         ),
         Expanded(
           child: _Item(
@@ -239,9 +247,26 @@ class _Name extends StatelessWidget {
             hint: S.of(context).lastNameHint,
             prefixIcon: Icons.person_outline,
             keyboardType: TextInputType.name,
-          )
+          ),
         ),
       ],
+    );
+  }
+}
+
+class _PhoneNumber extends StatelessWidget {
+  final TextEditingController controller;
+  const _PhoneNumber({required this.controller});
+
+  @override
+  Widget build(BuildContext context) {
+    return _Item(
+      controller: controller,
+      validator: Validators.phone,
+      title: S.of(context).phoneNumber,
+      hint: S.of(context).phoneNumberHint,
+      prefixIcon: Icons.phone_outlined,
+      keyboardType: TextInputType.phone,
     );
   }
 }
@@ -281,6 +306,7 @@ class _Password extends StatelessWidget {
   Widget build(BuildContext context) {
     var s = S.of(context);
     return _Item(
+      obscureText: !showPassword,
       controller: controller,
       prefixIcon: Icons.lock_outline,
       validator: isLogin
@@ -290,7 +316,7 @@ class _Password extends StatelessWidget {
           : (value) =>
                 Validators.confirmPassword(value, passwordController!.text),
 
-      suffixIcon: showPassword ? Icons.visibility : Icons.visibility_off,
+      suffixIcon: showPassword ? Icons.visibility_off : Icons.visibility,
       suffixTap: suffixTap,
       hint: S.of(context).passwordHint,
       passwordController: passwordController,

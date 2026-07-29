@@ -6,7 +6,6 @@ class ProfileModel {
   final String emailAddress;
   final String phoneNumber;
   final String? profileImage;
-  final DateTime birthday;
   final String theme;
   final String language;
   final bool notificationsEnabled;
@@ -19,7 +18,6 @@ class ProfileModel {
     required this.emailAddress,
     required this.phoneNumber,
     required this.profileImage,
-    required this.birthday,
     required this.theme,
     required this.language,
     required this.notificationsEnabled,
@@ -28,7 +26,6 @@ class ProfileModel {
   // Register
   ProfileModel.register({
     this.id,
-    required this.birthday,
     required this.lastName,
     required this.firstName,
     this.emailAddress = '',
@@ -62,7 +59,6 @@ class ProfileModel {
       emailAddress: emailAddress ?? this.emailAddress,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       profileImage: profileImage ?? this.profileImage,
-      birthday: birthday ?? this.birthday,
       theme: theme ?? this.theme,
       language: language ?? this.language,
       notificationsEnabled: notificationsEnabled ?? this.notificationsEnabled,
@@ -84,7 +80,6 @@ class ProfileModel {
       theme: json['theme'] as String? ?? 'system',
       language: json['language'] as String? ?? 'en',
       profileImage: json['profile_image'] as String?,
-      birthday: DateTime.parse(json['birthday'] as String),
       notificationsEnabled: json['notifications_enabled'] as bool? ?? true,
     );
   }
@@ -100,7 +95,6 @@ class ProfileModel {
       'profile_image': profileImage,
       'theme': theme,
       'language': language,
-      'birthday': birthday.toIso8601String().split('T').first,
       'notifications_enabled': notificationsEnabled,
     };
   }

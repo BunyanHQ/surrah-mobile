@@ -26,6 +26,7 @@ class RegisterBody extends StatelessWidget {
           firstNameController: cubit.firstNameController,
           lastNameController: cubit.lastNameController,
           // Phone
+          phoneController: cubit.phoneController,
           // Email
           emailController: cubit.emailController,
           // Password

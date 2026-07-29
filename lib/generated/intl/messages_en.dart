@@ -44,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginButton": MessageLookupByLibrary.simpleMessage("Login"),
         "loginSubtitle": MessageLookupByLibrary.simpleMessage(
             "Sign in to Continue to your account and enjoy our services"),
+        "loginSuccess": MessageLookupByLibrary.simpleMessage("Login Success"),
         "loginTitle": MessageLookupByLibrary.simpleMessage("Welcome Back👋"),
         "nextButton": MessageLookupByLibrary.simpleMessage("Next"),
         "onBoardingBody1": MessageLookupByLibrary.simpleMessage(
@@ -67,9 +68,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordHint": MessageLookupByLibrary.simpleMessage(
             "8+ characters with upper, lower, number & symbol"),
+        "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
+        "phoneNumberHint":
+            MessageLookupByLibrary.simpleMessage("Example: +1 123 456 7890"),
         "registerButton": MessageLookupByLibrary.simpleMessage("Register"),
         "registerSubtitle": MessageLookupByLibrary.simpleMessage(
             "Sign up to get started and enjoy our services"),
+        "registerSuccess":
+            MessageLookupByLibrary.simpleMessage("Register Success"),
         "registerTitle":
             MessageLookupByLibrary.simpleMessage("Create an Account"),
         "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),

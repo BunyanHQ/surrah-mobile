@@ -39,6 +39,7 @@ class AuthCubit extends Cubit<AuthStates> {
     );
     data.fold((l) => emit(LoginFailure(error: l.message)), (r) {
       profile = r;
+      clearControllers();
       emit(LoginSuccess());
     });
   }
@@ -63,14 +64,14 @@ class AuthCubit extends Cubit<AuthStates> {
       email: emailController.text,
       password: passwordController.text,
       profile: ProfileModel.register(
-        birthday: birthday,
-        phoneNumber: phoneController.text,
-        lastName: lastNameController.text,
         firstName: firstNameController.text,
+        lastName: lastNameController.text,
+        phoneNumber: phoneController.text,
       ),
     );
     data.fold((l) => emit(RegisterFailure(error: l.message)), (r) {
       profile = r;
+      clearControllers();
       emit(RegisterSuccess());
     });
   }

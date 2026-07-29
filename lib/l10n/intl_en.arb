@@ -56,6 +56,8 @@
   "@dontHaveAnAccount": {},
   "signUp": "Sign Up",
   "@signUp": {},
+  "loginSuccess": "Login Success",
+  "@loginSuccess": {},
 
 
   "registerTitle": "Create an Account",
@@ -70,6 +72,10 @@
   "@lastName": {},
   "lastNameHint": "Example: Doe",
   "@lastNameHint": {},
+  "phoneNumber": "Phone Number",
+  "@phoneNumber": {},
+  "phoneNumberHint": "Example: +1 123 456 7890",
+  "@phoneNumberHint": {},
   "confirmPassword": "Confirm Password",
   "@confirmPassword": {},
   "confirmPasswordHint": "Re-enter your password",
@@ -79,6 +85,8 @@
   "alreadyHaveAnAccount": "Already have an account?",
   "@alreadyHaveAnAccount": {},
   "signIn": "Sign In",
-  "@signIn": {}
+  "@signIn": {},
+  "registerSuccess": "Register Success",
+  "@registerSuccess": {}
 
 }

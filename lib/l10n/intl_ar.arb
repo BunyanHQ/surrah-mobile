@@ -56,6 +56,8 @@
   "@dontHaveAnAccount": {},
   "signUp": "إنشاء حساب",
   "@signUp": {},
+  "loginSuccess": "تم تسجيل الدخول بنجاح",
+  "@loginSuccess": {},
 
 
   "registerTitle": "إنشاء حساب",
@@ -70,6 +72,10 @@
   "@lastName": {},
   "lastNameHint": "مثال: دو",
   "@lastNameHint": {},  
+  "phoneNumber": "رقم الهاتف",
+  "@phoneNumber": {},
+  "phoneNumberHint": "مثال: +1 123 456 7890",
+  "@phoneNumberHint": {},
   "confirmPassword": "تأكيد كلمة المرور",
   "@confirmPassword": {},
   "confirmPasswordHint": "أعد إدخال كلمة المرور",
@@ -79,5 +85,7 @@
   "alreadyHaveAnAccount": "هل لديك حساب بالفعل?",
   "@alreadyHaveAnAccount": {},
   "signIn": "تسجيل الدخول",
-  "@signIn": {}
+  "@signIn": {},
+  "registerSuccess": "تم إنشاء الحساب بنجاح",
+  "@registerSuccess": {}
 }

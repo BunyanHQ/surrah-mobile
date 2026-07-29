@@ -45,6 +45,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginButton": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "loginSubtitle": MessageLookupByLibrary.simpleMessage(
             "قم بتسجيل الدخول لمواصلة إلى حسابك والاستمتاع بخدماتنا"),
+        "loginSuccess":
+            MessageLookupByLibrary.simpleMessage("تم تسجيل الدخول بنجاح"),
         "loginTitle": MessageLookupByLibrary.simpleMessage("مرحبًا بعودتك👋"),
         "nextButton": MessageLookupByLibrary.simpleMessage("التالي"),
         "onBoardingBody1":
@@ -68,9 +70,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "passwordHint": MessageLookupByLibrary.simpleMessage(
             "8+ أحرف مع أحرف كبيرة و صغيرة، رقم & رمز"),
+        "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+        "phoneNumberHint":
+            MessageLookupByLibrary.simpleMessage("مثال: +1 123 456 7890"),
         "registerButton": MessageLookupByLibrary.simpleMessage("تسجيل"),
         "registerSubtitle": MessageLookupByLibrary.simpleMessage(
             "سجل الآن للبدء والاستمتاع بخدماتنا"),
+        "registerSuccess":
+            MessageLookupByLibrary.simpleMessage("تم إنشاء الحساب بنجاح"),
         "registerTitle": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
         "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "signInWithFacebook": MessageLookupByLibrary.simpleMessage(
