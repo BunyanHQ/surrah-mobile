@@ -34,12 +34,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "emailAddress": MessageLookupByLibrary.simpleMessage("Email Address"),
         "emailAddressHint":
             MessageLookupByLibrary.simpleMessage("john.doe@example.com"),
+        "firstName": MessageLookupByLibrary.simpleMessage("First Name"),
+        "firstNameHint": MessageLookupByLibrary.simpleMessage("Example: John"),
         "forgetPassword":
             MessageLookupByLibrary.simpleMessage("Forget Password?"),
-        "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
-        "fullNameHint":
-            MessageLookupByLibrary.simpleMessage("Example: John Doe"),
         "getStartedButton": MessageLookupByLibrary.simpleMessage("Get Started"),
+        "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
+        "lastNameHint": MessageLookupByLibrary.simpleMessage("Example: Doe"),
         "loginButton": MessageLookupByLibrary.simpleMessage("Login"),
         "loginSubtitle": MessageLookupByLibrary.simpleMessage(
             "Sign in to Continue to your account and enjoy our services"),

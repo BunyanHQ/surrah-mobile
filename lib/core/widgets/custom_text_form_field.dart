@@ -1,168 +1,141 @@
-import '../utils/styles.dart';
-import '../utils/validators.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../utils/styles.dart';
 
 class CustomTextFormField extends StatelessWidget {
-
-  // Value
-  final String? initialValue;
-
-  // Controller
-  final TextEditingController? controller;
-  final TextEditingController? passwordController;
-
-  // Text Settings
-  final bool obscureText;
-  final TextInputType? keyboardType;
-  final int maxLines;
-  final int? maxLength;
-  final bool readOnly;
-  final bool autocorrect;
-  final TextInputAction? textInputAction;
-
-  // Auto Lines
-  final bool autoMaxLines;
-  final int? maxAutoLines;
-
-  // Decoration
-  final InputBorder? border;
-  final Color? backgroundColor;
-  final EdgeInsets? padding;
-
-  // Text Style
-  final String? hintText;
-  final String? labelText;
-  final TextStyle? inputStyle;
-  final TextStyle? hintStyle;
-
-  // Icons
-  final IconData? prefixIcon;
-  final VoidCallback? prefixTap;
-
-  final IconData? suffixIcon;
-  final VoidCallback? suffixTap;
-
-  // Events
-  final VoidCallback? onTap;
-  final FocusNode? focusNode;
-  final ValueChanged<String?>? onChanged;
-  final ValueChanged<String>? onFieldSubmitted;
-  final FormFieldSetter<String>? onSaved;
-
-  // Alignment
-  final TextAlign? textAlign;
-
-  // Validation
-  final String? Function(String?)? validator;
-
   const CustomTextFormField({
     super.key,
-    this.initialValue,
     this.controller,
-    this.passwordController,
-    this.obscureText = false,
-    this.keyboardType,
-    this.maxLines = 1,
-    this.maxLength,
-    this.readOnly = false,
-    this.autocorrect = false,
-    this.textInputAction,
-    this.autoMaxLines = false,
-    this.maxAutoLines,
-    this.border,
-    this.backgroundColor,
-    this.padding,
+    this.focusNode,
+    this.initialValue,
     this.hintText,
     this.labelText,
-    this.inputStyle,
-    this.hintStyle,
+    this.keyboardType,
+    this.textInputAction,
     this.prefixIcon,
-    this.prefixTap,
     this.suffixIcon,
-    this.suffixTap,
-    this.onTap,
-    this.focusNode,
+    this.onPrefixIconTap,
+    this.onSuffixIconTap,
+    this.validator,
     this.onChanged,
     this.onFieldSubmitted,
     this.onSaved,
-    this.textAlign,
-    this.validator,
+    this.onTap,
+    this.obscureText = false,
+    this.readOnly = false,
+    this.enabled = true,
+    this.autofocus = false,
+    this.autocorrect = false,
+    this.maxLines = 1,
+    this.minLines,
+    this.maxLength,
+    this.fillColor,
+    this.border,
+    this.contentPadding,
+    this.style,
+    this.hintStyle,
   });
+
+  // Controller
+  final TextEditingController? controller;
+  final FocusNode? focusNode;
+  final String? initialValue;
+
+  // Text
+  final String? hintText;
+  final String? labelText;
+
+  // Input
+  final TextInputType? keyboardType;
+  final TextInputAction? textInputAction;
+  final bool obscureText;
+  final bool readOnly;
+  final bool enabled;
+  final bool autofocus;
+  final bool autocorrect;
+  final int? minLines;
+  final int? maxLines;
+  final int? maxLength;
+
+  // Icons
+  final IconData? prefixIcon;
+  final IconData? suffixIcon;
+  final VoidCallback? onPrefixIconTap;
+  final VoidCallback? onSuffixIconTap;
+
+  // Callbacks
+  final VoidCallback? onTap;
+  final ValueChanged<String>? onChanged;
+  final ValueChanged<String>? onFieldSubmitted;
+  final FormFieldSetter<String>? onSaved;
+  final FormFieldValidator<String>? validator;
+
+  // Appearance
+  final Color? fillColor;
+  final InputBorder? border;
+  final EdgeInsetsGeometry? contentPadding;
+  final TextStyle? style;
+  final TextStyle? hintStyle;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
     return TextFormField(
-
-      // Value
-      initialValue: initialValue,
-
-      // Controller
       controller: controller,
       focusNode: focusNode,
+      initialValue: initialValue,
 
-      // Events
+      keyboardType: keyboardType,
+      textInputAction: textInputAction,
+      obscureText: obscureText,
+      readOnly: readOnly,
+      enabled: enabled,
+      autofocus: autofocus,
+      autocorrect: autocorrect,
+      minLines: minLines,
+      maxLines: maxLines,
+      maxLength: maxLength,
+
       onTap: onTap,
       onChanged: onChanged,
-      onSaved: onSaved,
       onFieldSubmitted: onFieldSubmitted,
+      onSaved: onSaved,
+      validator: validator,
 
-      // Input Settings
-      obscureText: obscureText,
-      keyboardType: keyboardType,
-      maxLength: maxLength,
-      readOnly: readOnly,
-      autocorrect: autocorrect,
-      textInputAction: textInputAction,
-
-      // Auto Lines
-      maxLines: _getMaxLines(),
-      minLines: autoMaxLines ? 1 : null,
-
-      // Alignment
-      textAlign: textAlign ?? TextAlign.start,
-      textAlignVertical: TextAlignVertical.top,
-
-      // Style
-      style: inputStyle ?? _FontStyle.input(context),
-
-      // Validation
-      validator:
-          validator ??
-          (value) => Validators.validate(
-            keyboardType: keyboardType,
-            value: value,
-            confirmPasswordController: passwordController,
-          ),
+      style: style ?? _AppTextFieldStyle.input(context),
 
       decoration: InputDecoration(
         isDense: true,
 
-        // Border
-        border: _buildBorder(context),
-        enabledBorder: _buildBorder(context),
-        focusedBorder: _buildBorder(context, color: theme.primaryColor),
-
-        // Colors
         filled: true,
-        fillColor: backgroundColor ?? theme.scaffoldBackgroundColor,
+        fillColor: fillColor ?? theme.scaffoldBackgroundColor,
 
-        // Text
         hintText: hintText,
         labelText: labelText,
-        hintStyle: hintStyle ?? _FontStyle.hint(context),
+        hintStyle: hintStyle ?? _AppTextFieldStyle.hint(context),
 
-        // Icons
-        prefixIcon: _buildPrefixIcon(),
-        suffixIcon: _buildSuffixIcon(),
+        contentPadding: contentPadding ?? EdgeInsets.symmetric(vertical: 12.h),
 
-        prefixIconConstraints: BoxConstraints(minWidth: 30.w, minHeight: 0),
+        border: _border(context),
+        enabledBorder: _border(context),
+        errorBorder: _border(context, color: Colors.red),
+        focusedBorder: _border(context, color: theme.primaryColor),
+        focusedErrorBorder: _border(context, color: Colors.red),
 
-        // Padding
-        contentPadding: _buildContentPadding(),
+        prefixIcon: _buildIcon(true, context, prefixIcon, onPrefixIconTap),
+        suffixIcon: _buildIcon(false, context, suffixIcon, onSuffixIconTap),
+
+        prefixIconConstraints: BoxConstraints.tightFor(
+          width: 34.w,
+          height: 35.h,
+        ),
+
+        suffixIconConstraints: BoxConstraints.tightFor(
+          width: 34.w,
+          height: 35.h,
+        ),
 
         errorStyle: Styles.textStyle500.copyWith(
           color: Colors.red,
@@ -170,81 +143,52 @@ class CustomTextFormField extends StatelessWidget {
         ),
       ),
 
-      onTapOutside: (_) {
-        FocusScope.of(context).unfocus();
-      },
+      onTapOutside: (_) => FocusScope.of(context).unfocus(),
     );
   }
 
-  // Max Lines Builder
-  int? _getMaxLines() {
-    if (!autoMaxLines) {
-      return maxLines;
-    }
-
-    return maxAutoLines;
-  }
-
-  // Border Builder
-  InputBorder _buildBorder(BuildContext context, {Color? color}) {
-    final borderColor =
-        color ?? Theme.of(context).hintColor.withValues(alpha: .5);
-
-    return border?.copyWith(
-          borderSide: BorderSide(width: .5, color: borderColor),
-        ) ??
+  InputBorder _border(BuildContext context, {Color? color}) {
+    return border ??
         OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
-          borderSide: BorderSide(width: .5, color: borderColor),
+          borderRadius: BorderRadius.circular(4.r),
+          borderSide: BorderSide(
+            color: color ?? Theme.of(context).hintColor.withValues(alpha: .5),
+            width: .5,
+          ),
         );
   }
 
-  // Padding Builder
-  EdgeInsetsGeometry _buildContentPadding() {
-    return padding ??
-        EdgeInsetsDirectional.only(
-          start: 8.w,
-          end: 8.w,
-          top: 12.h,
-          bottom: 12.h,
-        );
-  }
-
-  // Prefix Icon Builder
-  Widget? _buildPrefixIcon() {
-    if (prefixIcon == null) return null;
-
+  Widget? _buildIcon(
+    bool isPrefix,
+    BuildContext context,
+    IconData? icon,
+    VoidCallback? onTap,
+  ) {
+    if (icon == null) return null;
     return GestureDetector(
-      onTap: prefixTap,
-      child: Padding(
-        padding: EdgeInsetsDirectional.only(start: 16.w, end: 4.w),
-        child: Icon(prefixIcon),
+      onTap: onTap,
+      child: Row(
+        mainAxisAlignment:isPrefix ? MainAxisAlignment.end : MainAxisAlignment.start,
+        children: [
+          Icon(icon, size: 23.sp, color: Theme.of(context).hintColor)
+        ]
       ),
     );
   }
-
-  // Suffix Icon Builder
-  Widget? _buildSuffixIcon() {
-    if (suffixIcon == null) return null;
-
-    return GestureDetector(onTap: suffixTap, child: Icon(suffixIcon));
-  }
 }
 
-class _FontStyle {
-  // Hint Style
+class _AppTextFieldStyle {
   static TextStyle hint(BuildContext context) {
-    return Styles.textStyle500.copyWith(
-      color: Theme.of(context).hintColor.withValues(alpha: .7),
-      fontSize: 18.sp,
+    return Styles.textStyle700.copyWith(
+      fontSize: 16.sp,
+      color: Theme.of(context).hintColor.withValues(alpha: .5),
     );
   }
 
-  // Input Style
   static TextStyle input(BuildContext context) {
-    return Styles.textStyle500.copyWith(
+    return Styles.textStyle800.copyWith(
+      fontSize: 18.sp,
       color: Theme.of(context).hintColor,
-      fontSize: 20.sp,
     );
   }
 }

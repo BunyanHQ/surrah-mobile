@@ -320,21 +320,41 @@ class S {
     );
   }
 
-  /// `Full Name`
-  String get fullName {
+  /// `First Name`
+  String get firstName {
     return Intl.message(
-      'Full Name',
-      name: 'fullName',
+      'First Name',
+      name: 'firstName',
       desc: '',
       args: [],
     );
   }
 
-  /// `Example: John Doe`
-  String get fullNameHint {
+  /// `Example: John`
+  String get firstNameHint {
     return Intl.message(
-      'Example: John Doe',
-      name: 'fullNameHint',
+      'Example: John',
+      name: 'firstNameHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last Name`
+  String get lastName {
+    return Intl.message(
+      'Last Name',
+      name: 'lastName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Example: Doe`
+  String get lastNameHint {
+    return Intl.message(
+      'Example: Doe',
+      name: 'lastNameHint',
       desc: '',
       args: [],
     );

@@ -2,7 +2,9 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../../core/services/aupabase_service.dart';
 
 class AuthData {
-  final supabaseService = SupabaseService.instance;
+  final SupabaseService supabaseService;
+  AuthData({required this.supabaseService});
+  
   // Login
   Future<PostgrestMap> login({
     required String email,

@@ -35,11 +35,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
         "emailAddressHint":
             MessageLookupByLibrary.simpleMessage("john.doe@example.com"),
+        "firstName": MessageLookupByLibrary.simpleMessage("الاسم الأول"),
+        "firstNameHint": MessageLookupByLibrary.simpleMessage("مثال: جون"),
         "forgetPassword":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
-        "fullName": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
-        "fullNameHint": MessageLookupByLibrary.simpleMessage("مثال: جون دو"),
         "getStartedButton": MessageLookupByLibrary.simpleMessage("البدء"),
+        "lastName": MessageLookupByLibrary.simpleMessage("اسم العائلة"),
+        "lastNameHint": MessageLookupByLibrary.simpleMessage("مثال: دو"),
         "loginButton": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "loginSubtitle": MessageLookupByLibrary.simpleMessage(
             "قم بتسجيل الدخول لمواصلة إلى حسابك والاستمتاع بخدماتنا"),

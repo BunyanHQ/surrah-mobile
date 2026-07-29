@@ -95,7 +95,6 @@ class ProfileModel {
       if (id != null) 'id': id,
       'first_name': firstName,
       'last_name': lastName,
-      "email_address": emailAddress,
       'full_name': fullName.isNotEmpty ? fullName : '$firstName $lastName',
       'phone_number': phoneNumber,
       'profile_image': profileImage,

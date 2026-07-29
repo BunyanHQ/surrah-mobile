@@ -1,11 +1,13 @@
+
 import 'auth_form.dart';
-import '../views/register_view.dart';
 import 'package:flutter/material.dart';
+import '../../manager/auth_states.dart';
 import '../../../../../const/assets.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../../../core/utils/nav_to.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/widgets/custom_text.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:surrah/features/auth/presentation/manager/auth_cubit.dart';
 
 class LoginBody extends StatelessWidget {
   const LoginBody({super.key});
@@ -13,24 +15,42 @@ class LoginBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var s = S.of(context);
-    return AuthForm(
-      title: s.loginTitle,
-      buttonTitle: s.loginButton,
-      description: s.loginSubtitle,
-      forgetPasswordScreen: Placeholder(),
-      emailController: TextEditingController(),
-      passwordController: TextEditingController(),
-      onButtonPressed: () {},
-      bottomWidget: Column(
-        spacing: 10.h,
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [_OrContinueWith(), _GoogleButton(isLoading: false)],
-      ),
-      buttonLoading: false,
-      bottomLinkText: s.signUp,
-      bottomText: s.dontHaveAnAccount,
-      bottomOnTap: () => NavTo.push(context: context, nextPage: RegisterView()),
+    var formKey = GlobalKey<FormState>();
+    return BlocBuilder<AuthCubit, AuthStates>(
+      builder: (context, state) {
+        var cubit = AuthCubit.get(context);
+        return AuthForm(
+          formKey: formKey,
+          // Title
+          title: s.loginTitle,
+          description: s.loginSubtitle,
+          // Email
+          emailController: cubit.emailController,
+          // Password
+          showPassword: cubit.isLoginPasswordVisible,
+          passwordController: cubit.passwordController,
+          passwordSuffixTap: () => cubit.changeLoginPasswordVisibility(),
+          // Forget Password
+          forgetPasswordScreen: Placeholder(),
+          // Button
+          buttonTitle: s.loginButton,
+          buttonLoading: state is LoginLoading,
+          onButtonPressed: () => cubit.login(formKey: formKey),
+          // Social Auth
+          actions: Column(
+            spacing: 10.h,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: const [
+              _OrContinueWith(),
+              _GoogleButton(isLoading: false),
+            ],
+          ),
+          // Auth Switch
+          authSwitchText: s.dontHaveAnAccount,
+          authSwitchLinkText: s.signUp,
+        );
+      },
     );
   }
 }

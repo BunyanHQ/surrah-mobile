@@ -1,14 +1,18 @@
+import '../views/register_view.dart';
 import 'package:flutter/material.dart';
+import '../../manager/auth_cubit.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../../../core/utils/nav_to.dart';
 import '../../../../../core/utils/styles.dart';
-import '../../../../../generated/l10n.dart';
 import '../../../../../core/utils/validators.dart';
+import '../../../../../core/di/server_locator.dart';
 import '../../../../../core/widgets/custom_text.dart';
 import '../../../../../core/widgets/custom_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 
 class AuthForm extends StatelessWidget {
+  final GlobalKey<FormState> formKey;
   // Title
   final String title;
   final String description;
@@ -26,7 +30,8 @@ class AuthForm extends StatelessWidget {
   // Register
   final bool? showConfirmPassword;
   final Function()? confirmPasswordSuffixTap;
-  final TextEditingController? nameController;
+  final TextEditingController? firstNameController;
+  final TextEditingController? lastNameController;
   final TextEditingController? confirmPasswordController;
 
   // Button
@@ -34,14 +39,17 @@ class AuthForm extends StatelessWidget {
   final String buttonTitle;
   final VoidCallback onButtonPressed;
 
-  // Bottom
-  final Widget? bottomWidget;
-  final String? bottomText;
-  final String? bottomLinkText;
-  final VoidCallback? bottomOnTap;
+  // Action
+  final Widget? actions;
+
+  // Auth Switch
+  final String? authSwitchText;
+  final String? authSwitchLinkText;
+  final VoidCallback? authSwitchOnTap;
 
   const AuthForm({
     super.key,
+    required this.formKey,
     this.topWidget,
     required this.title,
     required this.description,
@@ -49,7 +57,8 @@ class AuthForm extends StatelessWidget {
     this.showPassword,
     this.passwordSuffixTap,
     this.passwordController,
-    this.nameController,
+    this.firstNameController,
+    this.lastNameController,
     this.showConfirmPassword,
     this.confirmPasswordSuffixTap,
     this.confirmPasswordController,
@@ -57,62 +66,67 @@ class AuthForm extends StatelessWidget {
     required this.buttonTitle,
     required this.onButtonPressed,
     required this.buttonLoading,
-    this.bottomWidget,
-    this.bottomText,
-    this.bottomLinkText,
-    this.bottomOnTap,
+    this.actions,
+    this.authSwitchText,
+    this.authSwitchLinkText,
+    this.authSwitchOnTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        spacing: 11.h,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (topWidget != null) SafeArea(child: topWidget!),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.1),
-          _Title(title: title, description: description),
-          SizedBox(height: 5.h),
-          if (nameController != null) _Name(controller: nameController!),
-          if (emailController != null) _Email(controller: emailController!),
-          if (passwordController != null)
-            _Password(
-              controller: passwordController!,
-              showPassword: showPassword ?? false,
-              suffixTap: passwordSuffixTap ?? () {},
+      child: Form(
+        key: formKey,
+        child: Column(
+          spacing: 11.h,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (topWidget != null) SafeArea(child: topWidget!),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+            _Title(title: title, description: description),
+            SizedBox(height: 5.h),
+            if (firstNameController != null && lastNameController != null) _Name(
+              firstNameController: firstNameController!,
+              lastNameController: lastNameController!,
             ),
-          if (forgetPasswordScreen != null)
-            _ForgetPassword(forgetPasswordScreen: forgetPasswordScreen!),
-          if (confirmPasswordController != null)
-            _Password(
-              passwordController: passwordController,
-              controller: confirmPasswordController!,
-              showPassword: showConfirmPassword ?? false,
-              suffixTap: confirmPasswordSuffixTap ?? () {},
+            if (emailController != null) _Email(controller: emailController!),
+            if (passwordController != null)
+              _Password(
+                isLogin: forgetPasswordScreen != null,
+                controller: passwordController!,
+                showPassword: showPassword ?? false,
+                suffixTap: passwordSuffixTap ?? () {},
+              ),
+            if (forgetPasswordScreen != null)
+              _ForgetPassword(forgetPasswordScreen: forgetPasswordScreen!),
+            if (confirmPasswordController != null)
+              _Password(
+                isLogin: forgetPasswordScreen != null,
+                passwordController: passwordController,
+                controller: confirmPasswordController!,
+                showPassword: showConfirmPassword ?? false,
+                suffixTap: confirmPasswordSuffixTap ?? () {},
+              ),
+            Padding(
+              padding: EdgeInsets.only(
+                top: forgetPasswordScreen != null ? 5.h : 15.h,
+                bottom: 10.h,
+              ),
+              child: CustomButton(
+                isLoading: buttonLoading,
+                label: buttonTitle,
+                onPressed: onButtonPressed,
+              ),
             ),
-          Padding(
-            padding: EdgeInsets.only(
-              top: forgetPasswordScreen != null ? 5.h : 15.h,
-              bottom: 10.h,
-            ),
-            child: CustomButton(
-              isLoading: buttonLoading,
-              label: buttonTitle,
-              onPressed: onButtonPressed,
-            ),
-          ),
-          ?bottomWidget,
-          SizedBox(height: 10.h),
-          if (bottomText != null &&
-              bottomLinkText != null &&
-              bottomOnTap != null)
-            _Bottom(
-              text: bottomText!,
-              linkText: bottomLinkText!,
-              onTap: bottomOnTap!,
-            ),
-        ],
+            ?actions,
+            if (authSwitchText != null && authSwitchLinkText != null)
+              _AuthSwitchPrompt(
+                text: authSwitchText!,
+                linkText: authSwitchLinkText!,
+                onTap: authSwitchOnTap,
+              ),
+          ],
+        ),
       ),
     );
   }
@@ -136,10 +150,10 @@ class _Title extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         CustomText(
-          size: 20.sp,
+          size: 18.sp,
           maxLines: 3,
           text: description,
-          type: Type.medium,
+          type: Type.overMedium,
           textAlign: TextAlign.center,
           opacity: FontOpacity.medium,
         ),
@@ -183,11 +197,11 @@ class _Item extends StatelessWidget {
           hintText: hint,
           prefixIcon: prefixIcon,
           suffixIcon: suffixIcon,
-          suffixTap: suffixTap,
           controller: controller,
+          onSuffixIconTap: suffixTap,
           keyboardType: keyboardType,
           validator: (value) => validator(value),
-          passwordController: passwordController,
+         // passwordController: passwordController,
         ),
       ],
     );
@@ -195,18 +209,39 @@ class _Item extends StatelessWidget {
 }
 
 class _Name extends StatelessWidget {
-  final TextEditingController controller;
-  const _Name({required this.controller});
+  final TextEditingController firstNameController;
+  final TextEditingController lastNameController;
+  const _Name({
+    required this.firstNameController,
+    required this.lastNameController,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return _Item(
-      controller: controller,
-      validator: Validators.text,
-      title: S.of(context).fullName,
-      hint: S.of(context).fullNameHint,
-      prefixIcon: Icons.person_outline,
-      keyboardType: TextInputType.name,
+    return Row(
+      spacing: 12.w,
+      children: [
+        Expanded(
+          child: _Item(
+            controller: firstNameController,
+            validator: Validators.text,
+            title: S.of(context).firstName,
+            hint: S.of(context).firstNameHint,
+            prefixIcon: Icons.person_outline,
+            keyboardType: TextInputType.name,
+          )
+        ),
+        Expanded(
+          child: _Item(
+            controller: lastNameController,
+            validator: Validators.text,
+            title: S.of(context).lastName,
+            hint: S.of(context).lastNameHint,
+            prefixIcon: Icons.person_outline,
+            keyboardType: TextInputType.name,
+          )
+        ),
+      ],
     );
   }
 }
@@ -229,11 +264,13 @@ class _Email extends StatelessWidget {
 }
 
 class _Password extends StatelessWidget {
+  final bool isLogin;
   final bool showPassword;
   final TextEditingController controller;
   final TextEditingController? passwordController;
   final Function() suffixTap;
   const _Password({
+    required this.isLogin,
     required this.showPassword,
     required this.controller,
     this.passwordController,
@@ -246,7 +283,13 @@ class _Password extends StatelessWidget {
     return _Item(
       controller: controller,
       prefixIcon: Icons.lock_outline,
-      validator: Validators.password,
+      validator: isLogin
+          ? Validators.text
+          : passwordController == null
+          ? Validators.password
+          : (value) =>
+                Validators.confirmPassword(value, passwordController!.text),
+
       suffixIcon: showPassword ? Icons.visibility : Icons.visibility_off,
       suffixTap: suffixTap,
       hint: S.of(context).passwordHint,
@@ -282,14 +325,14 @@ class _ForgetPassword extends StatelessWidget {
   }
 }
 
-class _Bottom extends StatelessWidget {
+class _AuthSwitchPrompt extends StatelessWidget {
   final String text;
   final String linkText;
-  final Function() onTap;
-  const _Bottom({
+  final Function()? onTap;
+  const _AuthSwitchPrompt({
     required this.text,
     required this.linkText,
-    required this.onTap,
+    this.onTap,
   });
 
   @override
@@ -298,9 +341,15 @@ class _Bottom extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         CustomText(text: text, size: 16.sp, type: Type.overMedium),
-        SizedBox(width: 10.w),
-        GestureDetector(
-          onTap: onTap,
+        TextButton(
+          onPressed: () {
+            if (onTap != null) {
+              onTap!();
+            } else {
+              NavTo.push(context: context, nextPage: RegisterView());
+            }
+            getIt<AuthCubit>().clearControllers();
+          },
           child: CustomText(
             text: linkText,
             size: 16.sp,
