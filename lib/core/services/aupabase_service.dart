@@ -75,4 +75,14 @@ class SupabaseService {
   Future<void> logout() async {
     await _client.auth.signOut();
   }
+
+  // Update Profile
+  Future<void> updateProfile({required Map<String, dynamic> profile}) async {
+    final user = _client.auth.currentUser;
+    if (user == null) {
+      throw Exception('No user logged in.');
+    }
+    await _client.from(SupabaseData.profilesCollection).update(profile).eq('id', user.id);
+  }
+
 }
