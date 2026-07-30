@@ -6,6 +6,7 @@ class SupabaseService {
 
   SupabaseService(this._client);
 
+  // Register
   Future<AuthResponse> register({
     required String email,
     required String password,
@@ -26,6 +27,7 @@ class SupabaseService {
     return response;
   }
 
+  // Login
   Future<PostgrestMap> login({
     required String email,
     required String password,
@@ -37,10 +39,24 @@ class SupabaseService {
     if (response.user == null) {
       throw Exception('Login failed.');
     }
-    return await _client.from(SupabaseData.profilesCollection)
+    return await _client
+        .from(SupabaseData.profilesCollection)
         .select()
         .eq('id', response.user!.id)
         .single();
+  }
+
+  // Send Reset Link
+  Future<void> sendResetLink({required String email}) async {
+    return await _client.auth.resetPasswordForEmail(
+      email,
+      redirectTo: 'surrah://reset-password',
+    );
+  }
+
+  // Update Password
+  Future<void> updatePassword({required String newPassword}) async {
+    await _client.auth.updateUser(UserAttributes(password: newPassword));
   }
 
   Future<void> logout() async {

@@ -79,58 +79,61 @@ class AuthForm extends StatelessWidget {
     return SingleChildScrollView(
       child: Form(
         key: formKey,
-        child: Column(
-          spacing: 11.h,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (topWidget != null) SafeArea(child: topWidget!),
-            SizedBox(height: MediaQuery.of(context).size.height * 0.1),
-            _Title(title: title, description: description),
-            SizedBox(height: 5.h),
-            if (firstNameController != null && lastNameController != null)
-              _Name(
-                firstNameController: firstNameController!,
-                lastNameController: lastNameController!,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 14.w),
+          child: Column(
+            spacing: 11.h,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (topWidget != null) SafeArea(child: topWidget!),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+              _Title(title: title, description: description),
+              SizedBox(height: 5.h),
+              if (firstNameController != null && lastNameController != null)
+                _Name(
+                  firstNameController: firstNameController!,
+                  lastNameController: lastNameController!,
+                ),
+              if (phoneController != null)
+                _PhoneNumber(controller: phoneController!),
+              if (emailController != null) _Email(controller: emailController!),
+              if (passwordController != null)
+                _Password(
+                  isLogin: forgetPasswordScreen != null,
+                  controller: passwordController!,
+                  showPassword: showPassword ?? false,
+                  suffixTap: passwordSuffixTap ?? () {},
+                ),
+              if (forgetPasswordScreen != null)
+                _ForgetPassword(forgetPasswordScreen: forgetPasswordScreen!),
+              if (confirmPasswordController != null)
+                _Password(
+                  isLogin: forgetPasswordScreen != null,
+                  passwordController: passwordController,
+                  controller: confirmPasswordController!,
+                  showPassword: showConfirmPassword ?? false,
+                  suffixTap: confirmPasswordSuffixTap ?? () {},
+                ),
+              Padding(
+                padding: EdgeInsets.only(
+                  top: forgetPasswordScreen != null ? 5.h : 15.h,
+                  bottom: 10.h,
+                ),
+                child: CustomButton(
+                  isLoading: buttonLoading,
+                  label: buttonTitle,
+                  onPressed: onButtonPressed,
+                ),
               ),
-            if (phoneController != null)
-              _PhoneNumber(controller: phoneController!),
-            if (emailController != null) _Email(controller: emailController!),
-            if (passwordController != null)
-              _Password(
-                isLogin: forgetPasswordScreen != null,
-                controller: passwordController!,
-                showPassword: showPassword ?? false,
-                suffixTap: passwordSuffixTap ?? () {},
-              ),
-            if (forgetPasswordScreen != null)
-              _ForgetPassword(forgetPasswordScreen: forgetPasswordScreen!),
-            if (confirmPasswordController != null)
-              _Password(
-                isLogin: forgetPasswordScreen != null,
-                passwordController: passwordController,
-                controller: confirmPasswordController!,
-                showPassword: showConfirmPassword ?? false,
-                suffixTap: confirmPasswordSuffixTap ?? () {},
-              ),
-            Padding(
-              padding: EdgeInsets.only(
-                top: forgetPasswordScreen != null ? 5.h : 15.h,
-                bottom: 10.h,
-              ),
-              child: CustomButton(
-                isLoading: buttonLoading,
-                label: buttonTitle,
-                onPressed: onButtonPressed,
-              ),
-            ),
-            ?actions,
-            if (authSwitchText != null && authSwitchLinkText != null)
-              _AuthSwitchPrompt(
-                text: authSwitchText!,
-                linkText: authSwitchLinkText!,
-                onTap: authSwitchOnTap,
-              ),
-          ],
+              ?actions,
+              if (authSwitchText != null && authSwitchLinkText != null)
+                _AuthSwitchPrompt(
+                  text: authSwitchText!,
+                  linkText: authSwitchLinkText!,
+                  onTap: authSwitchOnTap,
+                ),
+            ],
+          )
         ),
       ),
     );
@@ -335,8 +338,10 @@ class _ForgetPassword extends StatelessWidget {
     return Align(
       alignment: AlignmentDirectional.centerEnd,
       child: GestureDetector(
-        onTap: () =>
-            NavTo.push(context: context, nextPage: forgetPasswordScreen),
+        onTap: () {
+          getIt<AuthCubit>().clearControllers();
+          NavTo.push(context: context, nextPage: forgetPasswordScreen);
+        },
         child: Padding(
           padding: EdgeInsets.only(top: 8.h, bottom: 4.h),
           child: CustomText(

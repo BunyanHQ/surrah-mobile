@@ -44,6 +44,30 @@ class AuthRepoImpl extends AuthRepo {
   }
 
   @override
+  Future<Either<Failure, void>> sendResetLink({required String email}) async {
+    try {
+      final result = await authData.sendResetLink(email: email);
+      return Right(result);
+    } catch (e) {
+      return Left(SupabaseFailure.fromException(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> updatePassword({
+    required String newPassword,
+  }) async {
+    try {
+      final result = await authData.updatePassword(
+        newPassword: newPassword,
+      );
+      return Right(result);
+    } catch (e) {
+      return Left(SupabaseFailure.fromException(e));
+    }
+  }
+
+  @override
   Future<Either<Failure, void>> signOut() async {
     try {
       final result = await authData.logout();

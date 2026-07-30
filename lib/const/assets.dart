@@ -10,4 +10,6 @@ class Assets {
 
   static const String googleLogo = "assets/images/googleLogo.png";
   static const String facebookLogo = "assets/images/facebookLogo.png";
+
+  static const sendResetMailSuccess = "assets/images/sendEmail.png";
 }

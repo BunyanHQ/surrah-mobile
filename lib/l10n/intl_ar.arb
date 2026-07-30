@@ -87,5 +87,37 @@
   "signIn": "تسجيل الدخول",
   "@signIn": {},
   "registerSuccess": "تم إنشاء الحساب بنجاح",
-  "@registerSuccess": {}
+  "@registerSuccess": {},
+
+
+  "sendResetLinkTitle": "إرسال رابط إعادة التعيين",
+  "@sendResetLinkTitle": {},
+  "sendResetLinkSubtitle": "أدخل عنوان بريدك الإلكتروني لتلقي رابط إعادة تعيين كلمة المرور.",
+  "@sendResetLinkSubtitle": {},
+  "sendResetLinkButton": "إرسال رابط إعادة التعيين",
+  "@sendResetLinkButton": {},
+  "goBackToLogin": "العودة إلى تسجيل الدخول",
+  "@goBackToLogin": {},
+  "sendResetLinkSuccess": "تم إرسال رابط إعادة تعيين كلمة المرور بنجاح.",
+  "@sendResetLinkSuccess": {},
+  "sendResetLinkCardTitle": "تحقق من بريدك الإلكتروني",
+  "@sendResetLinkCardTitle": {},
+  "sendResetLinkCardBody": "لقد أرسلنا رابط إعادة تعيين كلمة المرور إلى عنوان بريدك الإلكتروني.",
+  "@sendResetLinkCardBody": {},
+  "resendResetLinkTitle": "لم تتلقى البريد الإلكتروني؟",
+  "@resendResetLinkTitle": {},
+  "resendResetLinkButton": "إعادة إرسال",
+  "@resendResetLinkButton": {},
+  "resendResetLinkSuccess": "تم إعادة إرسال رابط إعادة تعيين كلمة المرور بنجاح.",
+  "@resendResetLinkSuccess": {},
+
+
+  "updatePasswordTitle": "تحديث كلمة المرور",
+  "@updatePasswordTitle": {},
+  "updatePasswordSubtitle": "أدخل كلمة المرور الجديدة لتحديثها.",
+  "@updatePasswordSubtitle": {},
+  "updatePasswordButton": "تحديث كلمة المرور",
+  "@updatePasswordButton": {},
+  "updatePasswordSuccess": "تم تحديث كلمة المرور بنجاح.",
+  "@updatePasswordSuccess": {}
 }

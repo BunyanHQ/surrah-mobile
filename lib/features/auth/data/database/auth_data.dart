@@ -26,6 +26,20 @@ class AuthData {
     );
   }
 
+  // Send Reset Link
+  Future<void> sendResetLink({required String email}) async {
+    return await supabaseService.sendResetLink(email: email);
+  }
+
+  // Update Password
+  Future<void> updatePassword({
+    required String newPassword,
+  }) async {
+    return await supabaseService.updatePassword(
+      newPassword: newPassword,
+    );
+  }
+
   // Logout
   Future<void> logout() async {
     return await supabaseService.logout();

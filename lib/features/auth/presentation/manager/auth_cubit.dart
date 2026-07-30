@@ -11,6 +11,7 @@ class AuthCubit extends Cubit<AuthStates> {
   static AuthCubit get(BuildContext context) => BlocProvider.of(context);
 
   ProfileModel? profile;
+  String resetEmailLink = "";
   bool isLoginPasswordVisible = false;
   bool isRegisterPasswordVisible = false;
   bool isRegisterConfirmPasswordVisible = false;
@@ -21,28 +22,6 @@ class AuthCubit extends Cubit<AuthStates> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
   DateTime birthday = DateTime.now().subtract(const Duration(days: 365 * 18));
-
-  // Login
-  void changeLoginPasswordVisibility() {
-    isLoginPasswordVisible = !isLoginPasswordVisible;
-    emit(ChangePasswordVisibility());
-  }
-
-  Future<void> login({required GlobalKey<FormState> formKey}) async {
-    if (!formKey.currentState!.validate()) {
-      return;
-    }
-    emit(LoginLoading());
-    var data = await authRepo.login(
-      email: emailController.text,
-      password: passwordController.text,
-    );
-    data.fold((l) => emit(LoginFailure(error: l.message)), (r) {
-      profile = r;
-      clearControllers();
-      emit(LoginSuccess());
-    });
-  }
 
   // Register
   void changeRegisterPasswordVisibility() {
@@ -76,6 +55,67 @@ class AuthCubit extends Cubit<AuthStates> {
     });
   }
 
+  // Login
+  void changeLoginPasswordVisibility() {
+    isLoginPasswordVisible = !isLoginPasswordVisible;
+    emit(ChangePasswordVisibility());
+  }
+
+  Future<void> login({required GlobalKey<FormState> formKey}) async {
+    if (!formKey.currentState!.validate()) {
+      return;
+    }
+    emit(LoginLoading());
+    var data = await authRepo.login(
+      email: emailController.text,
+      password: passwordController.text,
+    );
+    data.fold((l) => emit(LoginFailure(error: l.message)), (r) {
+      profile = r;
+      clearControllers();
+      emit(LoginSuccess());
+    });
+  }
+
+  // Send Reset Link
+  Future<void> sendResetLink({required GlobalKey<FormState> formKey}) async {
+    if (!formKey.currentState!.validate()) {
+      return;
+    }
+    emit(SendResetLinkLoading());
+    var data = await authRepo.sendResetLink(email: emailController.text);
+    data.fold((l) => emit(SendResetLinkFailure(error: l.message)), (r) {
+      resetEmailLink = emailController.text;
+      clearControllers();
+      emit(SendResetLinkSuccess());
+    });
+  }
+
+  // Resend Reset Link
+  Future<void> resendResetLink() async {
+    emit(ResendResetLinkLoading());
+    var data = await authRepo.sendResetLink(email: resetEmailLink);
+    data.fold(
+      (l) => emit(ResendResetLinkFailure(error: l.message)),
+      (r) => emit(ResendResetLinkSuccess()),
+    );
+  }
+
+  // Update Password
+  Future<void> updatePassword({required GlobalKey<FormState> formKey}) async {
+    if (!formKey.currentState!.validate()) {
+      return;
+    }
+    emit(UpdatePasswordLoading());
+    var data = await authRepo.updatePassword(
+      newPassword: passwordController.text,
+    );
+    data.fold((l) => emit(UpdatePasswordFailure(error: l.message)), (r) {
+      clearControllers();
+      emit(UpdatePasswordSuccess());
+    });
+  }
+
   // Sign Out
   Future<void> signOut() async {
     emit(SignOutLoading());
@@ -94,5 +134,6 @@ class AuthCubit extends Cubit<AuthStates> {
     phoneController.clear();
     passwordController.clear();
     confirmPasswordController.clear();
+    emit(ClearControllers());
   }
 }

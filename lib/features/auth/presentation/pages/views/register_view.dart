@@ -1,11 +1,9 @@
-
 import '../../manager/auth_cubit.dart';
 import '../widgets/register_body.dart';
 import 'package:flutter/material.dart';
 import '../../manager/auth_states.dart';
 import '../../../../../generated/l10n.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/services/snack_bar_service.dart';
 
 class RegisterView extends StatelessWidget {
@@ -18,15 +16,13 @@ class RegisterView extends StatelessWidget {
         if (state is RegisterFailure) {
           SnackBarService.failure(context: context, message: state.error);
         } else if (state is RegisterSuccess) {
-          SnackBarService.success(context: context, message: S.of(context).registerSuccess);
+          SnackBarService.success(
+            context: context,
+            message: S.of(context).registerSuccess,
+          );
         }
       },
-      child: Scaffold(
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal:16.w),
-          child: RegisterBody()
-        ),
-      )
+      child: Scaffold(body: RegisterBody()),
     );
   }
 }

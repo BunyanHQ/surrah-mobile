@@ -4,6 +4,8 @@ class AuthInitialState extends AuthStates {}
 
 class ChangePasswordVisibility extends AuthStates {}
 
+class ClearControllers extends AuthStates {}
+
 // Login
 class LoginLoading extends AuthStates {}
 
@@ -22,6 +24,36 @@ class RegisterSuccess extends AuthStates {}
 class RegisterFailure extends AuthStates {
   final String error;
   RegisterFailure({required this.error});
+}
+
+// Send Reset Link
+class SendResetLinkLoading extends AuthStates {}
+
+class SendResetLinkSuccess extends AuthStates {}
+
+class SendResetLinkFailure extends AuthStates {
+  final String error;
+  SendResetLinkFailure({required this.error});
+}
+
+// Resend Reset Link
+class ResendResetLinkLoading extends AuthStates {}
+
+class ResendResetLinkSuccess extends AuthStates {}
+
+class ResendResetLinkFailure extends AuthStates {
+  final String error;
+  ResendResetLinkFailure({required this.error});
+}
+
+// Update Password
+class UpdatePasswordLoading extends AuthStates {}
+
+class UpdatePasswordSuccess extends AuthStates {}
+
+class UpdatePasswordFailure extends AuthStates {
+  final String error;
+  UpdatePasswordFailure({required this.error});
 }
 
 // Sign Out

@@ -1,8 +1,8 @@
-
 import 'auth_form.dart';
 import 'package:flutter/material.dart';
 import '../../manager/auth_states.dart';
 import '../../../../../const/assets.dart';
+import '../views/send_reset_link_view.dart';
 import '../../../../../generated/l10n.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/widgets/custom_text.dart';
@@ -31,7 +31,7 @@ class LoginBody extends StatelessWidget {
           passwordController: cubit.passwordController,
           passwordSuffixTap: () => cubit.changeLoginPasswordVisibility(),
           // Forget Password
-          forgetPasswordScreen: Placeholder(),
+          forgetPasswordScreen: const SendResetLinkView(),
           // Button
           buttonTitle: s.loginButton,
           buttonLoading: state is LoginLoading,

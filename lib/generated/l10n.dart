@@ -18,8 +18,10 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(_current != null,
-        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    assert(
+      _current != null,
+      'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.',
+    );
     return _current!;
   }
 
@@ -41,8 +43,10 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(instance != null,
-        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
+    assert(
+      instance != null,
+      'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
+    );
     return instance!;
   }
 
@@ -52,12 +56,7 @@ class S {
 
   /// `Surrah`
   String get appName {
-    return Intl.message(
-      'Surrah',
-      name: 'appName',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Surrah', name: 'appName', desc: '', args: []);
   }
 
   /// `Track Every Dollar`
@@ -142,22 +141,12 @@ class S {
 
   /// `Skip`
   String get skipButton {
-    return Intl.message(
-      'Skip',
-      name: 'skipButton',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Skip', name: 'skipButton', desc: '', args: []);
   }
 
   /// `Next`
   String get nextButton {
-    return Intl.message(
-      'Next',
-      name: 'nextButton',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Next', name: 'nextButton', desc: '', args: []);
   }
 
   /// `Get Started`
@@ -212,12 +201,7 @@ class S {
 
   /// `Password`
   String get password {
-    return Intl.message(
-      'Password',
-      name: 'password',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Password', name: 'password', desc: '', args: []);
   }
 
   /// `8+ characters with upper, lower, number & symbol`
@@ -242,12 +226,7 @@ class S {
 
   /// `Login`
   String get loginButton {
-    return Intl.message(
-      'Login',
-      name: 'loginButton',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Login', name: 'loginButton', desc: '', args: []);
   }
 
   /// `Or continue with`
@@ -292,12 +271,7 @@ class S {
 
   /// `Sign Up`
   String get signUp {
-    return Intl.message(
-      'Sign Up',
-      name: 'signUp',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Sign Up', name: 'signUp', desc: '', args: []);
   }
 
   /// `Login Success`
@@ -332,12 +306,7 @@ class S {
 
   /// `First Name`
   String get firstName {
-    return Intl.message(
-      'First Name',
-      name: 'firstName',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('First Name', name: 'firstName', desc: '', args: []);
   }
 
   /// `Example: John`
@@ -352,12 +321,7 @@ class S {
 
   /// `Last Name`
   String get lastName {
-    return Intl.message(
-      'Last Name',
-      name: 'lastName',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Last Name', name: 'lastName', desc: '', args: []);
   }
 
   /// `Example: Doe`
@@ -412,12 +376,7 @@ class S {
 
   /// `Register`
   String get registerButton {
-    return Intl.message(
-      'Register',
-      name: 'registerButton',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Register', name: 'registerButton', desc: '', args: []);
   }
 
   /// `Already have an account?`
@@ -432,12 +391,7 @@ class S {
 
   /// `Sign In`
   String get signIn {
-    return Intl.message(
-      'Sign In',
-      name: 'signIn',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Sign In', name: 'signIn', desc: '', args: []);
   }
 
   /// `Register Success`
@@ -445,6 +399,146 @@ class S {
     return Intl.message(
       'Register Success',
       name: 'registerSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send Reset Link`
+  String get sendResetLinkTitle {
+    return Intl.message(
+      'Send Reset Link',
+      name: 'sendResetLinkTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your email address to receive a password reset link.`
+  String get sendResetLinkSubtitle {
+    return Intl.message(
+      'Enter your email address to receive a password reset link.',
+      name: 'sendResetLinkSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send Reset Link`
+  String get sendResetLinkButton {
+    return Intl.message(
+      'Send Reset Link',
+      name: 'sendResetLinkButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Go back to Login`
+  String get goBackToLogin {
+    return Intl.message(
+      'Go back to Login',
+      name: 'goBackToLogin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password reset link sent successfully.`
+  String get sendResetLinkSuccess {
+    return Intl.message(
+      'Password reset link sent successfully.',
+      name: 'sendResetLinkSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check your email`
+  String get sendResetLinkCardTitle {
+    return Intl.message(
+      'Check your email',
+      name: 'sendResetLinkCardTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We have sent a password reset link to your email address.`
+  String get sendResetLinkCardBody {
+    return Intl.message(
+      'We have sent a password reset link to your email address.',
+      name: 'sendResetLinkCardBody',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Didn't receive the email?`
+  String get resendResetLinkTitle {
+    return Intl.message(
+      'Didn\'t receive the email?',
+      name: 'resendResetLinkTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resend`
+  String get resendResetLinkButton {
+    return Intl.message(
+      'Resend',
+      name: 'resendResetLinkButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password reset link resent successfully.`
+  String get resendResetLinkSuccess {
+    return Intl.message(
+      'Password reset link resent successfully.',
+      name: 'resendResetLinkSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update Password`
+  String get updatePasswordTitle {
+    return Intl.message(
+      'Update Password',
+      name: 'updatePasswordTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your new password to update it.`
+  String get updatePasswordSubtitle {
+    return Intl.message(
+      'Enter your new password to update it.',
+      name: 'updatePasswordSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update Password`
+  String get updatePasswordButton {
+    return Intl.message(
+      'Update Password',
+      name: 'updatePasswordButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password updated successfully.`
+  String get updatePasswordSuccess {
+    return Intl.message(
+      'Password updated successfully.',
+      name: 'updatePasswordSuccess',
       desc: '',
       args: [],
     );

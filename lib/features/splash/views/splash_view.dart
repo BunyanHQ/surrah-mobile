@@ -3,7 +3,9 @@ import '../body/splash_logo.dart';
 import '../../../const/assets.dart';
 import 'package:flutter/material.dart';
 import '../../../core/utils/nav_to.dart';
+import '../../../core/services/deep_link_service.dart';
 import '../../onBoarding/pages/views/on_boarding_view.dart';
+import '../../auth/presentation/pages/views/update_password_view.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -16,16 +18,27 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
+    _handleNavigation();
+  }
 
-    Timer(const Duration(seconds: 2), () {
-      NavTo.pushReplacement(context: context, nextPage: OnBoardingView());
-    });
+  Future<void> _handleNavigation() async {
+    final uri = await DeepLinkService.getInitialLink();
+    await Future.delayed(const Duration(seconds: 2));
+    if (!mounted) return;
+    if (uri != null && uri.scheme == 'surrah' && uri.host == 'reset-password') {
+      NavTo.pushReplacement(
+        context: context,
+        nextPage: const UpdatePasswordView(),
+      );
+      return;
+    }
+    NavTo.pushReplacement(context: context, nextPage: const OnBoardingView());
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff123C36),
+      backgroundColor: const Color(0xff123C36),
       body: Stack(
         fit: StackFit.expand,
         children: [
