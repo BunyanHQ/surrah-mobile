@@ -10,6 +10,23 @@ class AuthRepoImpl extends AuthRepo {
   AuthRepoImpl({required this.authData});
 
   @override
+  Future<Either<Failure, ProfileModel>> autoLogin() async {
+    try {
+      final result = await authData.autoLogin();
+      if (result.user == null || result.email == null) {
+        return Left(SupabaseFailure(message: 'No user found.'));
+      }
+      var profile = ProfileModel.fromJson(
+        emailAddress: result.email!,
+        json: result.user!,
+      );
+      return Right(profile);
+    } catch (e) {
+      return Left(SupabaseFailure.fromException(e));
+    }
+  }
+
+  @override
   Future<Either<Failure, ProfileModel>> register({
     required String email,
     required String password,
@@ -58,9 +75,7 @@ class AuthRepoImpl extends AuthRepo {
     required String newPassword,
   }) async {
     try {
-      final result = await authData.updatePassword(
-        newPassword: newPassword,
-      );
+      final result = await authData.updatePassword(newPassword: newPassword);
       return Right(result);
     } catch (e) {
       return Left(SupabaseFailure.fromException(e));

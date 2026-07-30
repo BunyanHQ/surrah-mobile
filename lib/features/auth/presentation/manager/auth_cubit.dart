@@ -1,8 +1,8 @@
-import 'package:flutter/widgets.dart';
-
-import '../../data/models/profile_model.dart';
+import '../../../../core/services/deep_link_service.dart';
 import 'auth_states.dart';
+import 'package:flutter/widgets.dart';
 import '../../data/repo/auth_repo.dart';
+import '../../data/models/profile_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuthCubit extends Cubit<AuthStates> {
@@ -22,6 +22,21 @@ class AuthCubit extends Cubit<AuthStates> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
   DateTime birthday = DateTime.now().subtract(const Duration(days: 365 * 18));
+
+  // Auto Login
+  Future<void> autoLogin() async {
+    final uri = await DeepLinkService.getInitialLink();
+    if (uri != null && uri.scheme == 'surrah' && uri.host == 'reset-password') {
+      emit(ForgetPasswordDeepLink());
+      return;
+    }
+    emit(AutoLoginLoading());
+    var data = await authRepo.autoLogin();
+    data.fold((l) => emit(AutoLoginFailure(error: l.message)), (r) {
+      profile = r;
+      emit(AutoLoginSuccess(isProfileComplete: r.completeInitialSetup));
+    });
+  }
 
   // Register
   void changeRegisterPasswordVisibility() {

@@ -3,8 +3,21 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SupabaseService {
   final SupabaseClient _client;
-
   SupabaseService(this._client);
+
+  // Auto Login
+  Future<({PostgrestMap? user, String? email})> autoLogin() async {
+    final user = _client.auth.currentUser;
+    if (user == null) {
+      return (user: null, email: null);
+    }
+    var profile = await _client
+        .from(SupabaseData.profilesCollection)
+        .select()
+        .eq('id', user.id)
+        .single();
+    return (user: profile, email: user.email);
+  }
 
   // Register
   Future<AuthResponse> register({

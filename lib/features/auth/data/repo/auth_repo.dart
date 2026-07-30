@@ -3,6 +3,10 @@ import '../models/profile_model.dart';
 import '../../../../core/failure/failure.dart';
 
 abstract class AuthRepo {
+
+  // Auto Login
+  Future<Either<Failure, ProfileModel>> autoLogin();
+
   // Register
   Future<Either<Failure, ProfileModel>> register({
     required String email,

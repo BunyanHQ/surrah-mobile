@@ -4,7 +4,12 @@ import '../../../../core/services/aupabase_service.dart';
 class AuthData {
   final SupabaseService supabaseService;
   AuthData({required this.supabaseService});
-  
+
+  // Auto Login
+  Future<({PostgrestMap? user, String? email})> autoLogin() async {
+    return await supabaseService.autoLogin();
+  }
+
   // Login
   Future<PostgrestMap> login({
     required String email,
@@ -32,12 +37,8 @@ class AuthData {
   }
 
   // Update Password
-  Future<void> updatePassword({
-    required String newPassword,
-  }) async {
-    return await supabaseService.updatePassword(
-      newPassword: newPassword,
-    );
+  Future<void> updatePassword({required String newPassword}) async {
+    return await supabaseService.updatePassword(newPassword: newPassword);
   }
 
   // Logout

@@ -9,6 +9,7 @@ class ProfileModel {
   final String theme;
   final String language;
   final bool notificationsEnabled;
+  final bool completeInitialSetup;
 
   ProfileModel({
     required this.id,
@@ -21,6 +22,7 @@ class ProfileModel {
     required this.theme,
     required this.language,
     required this.notificationsEnabled,
+    required this.completeInitialSetup,
   });
 
   // Register
@@ -35,6 +37,7 @@ class ProfileModel {
     this.theme = 'system',
     this.language = 'en',
     this.notificationsEnabled = true,
+    this.completeInitialSetup = false,
   });
 
   // Copy With
@@ -50,6 +53,7 @@ class ProfileModel {
     String? theme,
     String? language,
     bool? notificationsEnabled,
+    bool? completeInitialSetup,
   }) {
     return ProfileModel(
       id: id ?? this.id,
@@ -62,6 +66,7 @@ class ProfileModel {
       theme: theme ?? this.theme,
       language: language ?? this.language,
       notificationsEnabled: notificationsEnabled ?? this.notificationsEnabled,
+      completeInitialSetup: completeInitialSetup ?? this.completeInitialSetup,
     );
   }
 
@@ -81,6 +86,7 @@ class ProfileModel {
       language: json['language'] as String? ?? 'en',
       profileImage: json['profile_image'] as String?,
       notificationsEnabled: json['notifications_enabled'] as bool? ?? true,
+      completeInitialSetup: json['complete_initial_setup'] as bool? ?? false,
     );
   }
 
@@ -96,6 +102,7 @@ class ProfileModel {
       'theme': theme,
       'language': language,
       'notifications_enabled': notificationsEnabled,
+      'complete_initial_setup': completeInitialSetup,
     };
   }
 }

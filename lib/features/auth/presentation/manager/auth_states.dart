@@ -6,6 +6,21 @@ class ChangePasswordVisibility extends AuthStates {}
 
 class ClearControllers extends AuthStates {}
 
+// Auto Login
+class AutoLoginLoading extends AuthStates {}
+
+class ForgetPasswordDeepLink extends AuthStates {}
+
+class AutoLoginSuccess extends AuthStates {
+  final bool isProfileComplete;
+  AutoLoginSuccess({this.isProfileComplete = false});
+}
+
+class AutoLoginFailure extends AuthStates {
+  final String error;
+  AutoLoginFailure({required this.error});
+}
+
 // Login
 class LoginLoading extends AuthStates {}
 
