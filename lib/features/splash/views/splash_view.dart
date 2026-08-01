@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../auth/presentation/manager/auth_cubit.dart';
 import '../../auth/presentation/manager/auth_states.dart';
 import '../../onBoarding/pages/views/on_boarding_view.dart';
+import '../../setup/presentation/pages/views/setup_view.dart';
 import '../../auth/presentation/pages/views/update_password_view.dart';
 
 class SplashView extends StatelessWidget {
@@ -34,7 +35,7 @@ class SplashView extends StatelessWidget {
             } else {
               NavTo.pushReplacement(
                 context: context,
-                nextPage: const OnBoardingView(),
+                nextPage: const SetupView(),
               );
             }
           }

@@ -543,6 +543,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Choose Your Currency`
+  String get setYourCurrencyTitle {
+    return Intl.message(
+      'Choose Your Currency',
+      name: 'setYourCurrencyTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select the currency used for prices, payments and balances.`
+  String get setYourCurrencySubtitle {
+    return Intl.message(
+      'Select the currency used for prices, payments and balances.',
+      name: 'setYourCurrencySubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose Currency :`
+  String get chooseCurrency {
+    return Intl.message(
+      'Choose Currency :',
+      name: 'chooseCurrency',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue`
+  String get continueButton {
+    return Intl.message('Continue', name: 'continueButton', desc: '', args: []);
+  }
+
+  /// `Set Your Salary`
+  String get setYourSalaryTitle {
+    return Intl.message(
+      'Set Your Salary',
+      name: 'setYourSalaryTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your salary amount and select the number of days in your salary cycle.`
+  String get setYourSalarySubtitle {
+    return Intl.message(
+      'Enter your salary amount and select the number of days in your salary cycle.',
+      name: 'setYourSalarySubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Salary Amount`
+  String get salaryAmount {
+    return Intl.message(
+      'Salary Amount',
+      name: 'salaryAmount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your salary amount`
+  String get salaryAmountHint {
+    return Intl.message(
+      'Enter your salary amount',
+      name: 'salaryAmountHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Salary Day`
+  String get salaryDay {
+    return Intl.message('Salary Day', name: 'salaryDay', desc: '', args: []);
+  }
+
+  /// `Select the number of days in your salary cycle`
+  String get salaryDayHint {
+    return Intl.message(
+      'Select the number of days in your salary cycle',
+      name: 'salaryDayHint',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

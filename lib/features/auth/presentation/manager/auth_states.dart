@@ -1,3 +1,5 @@
+import '../../data/models/profile_model.dart';
+
 sealed class AuthStates {}
 
 class AuthInitialState extends AuthStates {}
@@ -24,7 +26,10 @@ class AutoLoginFailure extends AuthStates {
 // Login
 class LoginLoading extends AuthStates {}
 
-class LoginSuccess extends AuthStates {}
+class LoginSuccess extends AuthStates {
+  final ProfileModel profile;
+  LoginSuccess({required this.profile});
+}
 
 class LoginFailure extends AuthStates {
   final String error;
@@ -34,7 +39,10 @@ class LoginFailure extends AuthStates {
 // Register
 class RegisterLoading extends AuthStates {}
 
-class RegisterSuccess extends AuthStates {}
+class RegisterSuccess extends AuthStates {
+  final ProfileModel profile;
+  RegisterSuccess({required this.profile});
+}
 
 class RegisterFailure extends AuthStates {
   final String error;

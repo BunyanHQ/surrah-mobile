@@ -26,12 +26,14 @@ class MessageLookup extends MessageLookupByLibrary {
       "هل لديك حساب بالفعل?",
     ),
     "appName": MessageLookupByLibrary.simpleMessage("صُرّة"),
+    "chooseCurrency": MessageLookupByLibrary.simpleMessage("اختر العملة :"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage(
       "تأكيد كلمة المرور",
     ),
     "confirmPasswordHint": MessageLookupByLibrary.simpleMessage(
       "أعد إدخال كلمة المرور",
     ),
+    "continueButton": MessageLookupByLibrary.simpleMessage("استمرار"),
     "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
     "emailAddress": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
     "emailAddressHint": MessageLookupByLibrary.simpleMessage(
@@ -99,6 +101,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "resendResetLinkTitle": MessageLookupByLibrary.simpleMessage(
       "لم تتلقى البريد الإلكتروني؟",
     ),
+    "salaryAmount": MessageLookupByLibrary.simpleMessage("مبلغ الراتب"),
+    "salaryAmountHint": MessageLookupByLibrary.simpleMessage("أدخل مبلغ راتبك"),
+    "salaryDay": MessageLookupByLibrary.simpleMessage("يوم الراتب"),
+    "salaryDayHint": MessageLookupByLibrary.simpleMessage(
+      "حدد عدد الأيام في دورة راتبك",
+    ),
     "sendResetLinkButton": MessageLookupByLibrary.simpleMessage(
       "إرسال رابط إعادة التعيين",
     ),
@@ -117,6 +125,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "sendResetLinkTitle": MessageLookupByLibrary.simpleMessage(
       "إرسال رابط إعادة التعيين",
     ),
+    "setYourCurrencySubtitle": MessageLookupByLibrary.simpleMessage(
+      "اختر العملة المستخدمة للأسعار والدفع والرصائل.",
+    ),
+    "setYourCurrencyTitle": MessageLookupByLibrary.simpleMessage("اختر عملتك"),
+    "setYourSalarySubtitle": MessageLookupByLibrary.simpleMessage(
+      "أدخل مبلغ راتبك وحدد عدد الأيام في دورة راتبك.",
+    ),
+    "setYourSalaryTitle": MessageLookupByLibrary.simpleMessage("حدد راتبك"),
     "signIn": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "signInWithFacebook": MessageLookupByLibrary.simpleMessage(
       "تسجيل الدخول باستخدام فيسبوك",

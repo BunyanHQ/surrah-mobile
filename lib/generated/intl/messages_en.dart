@@ -26,10 +26,12 @@ class MessageLookup extends MessageLookupByLibrary {
       "Already have an account?",
     ),
     "appName": MessageLookupByLibrary.simpleMessage("Surrah"),
+    "chooseCurrency": MessageLookupByLibrary.simpleMessage("Choose Currency :"),
     "confirmPassword": MessageLookupByLibrary.simpleMessage("Confirm Password"),
     "confirmPasswordHint": MessageLookupByLibrary.simpleMessage(
       "Re-enter your password",
     ),
+    "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
     "dontHaveAnAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
     ),
@@ -95,6 +97,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "resendResetLinkTitle": MessageLookupByLibrary.simpleMessage(
       "Didn\'t receive the email?",
     ),
+    "salaryAmount": MessageLookupByLibrary.simpleMessage("Salary Amount"),
+    "salaryAmountHint": MessageLookupByLibrary.simpleMessage(
+      "Enter your salary amount",
+    ),
+    "salaryDay": MessageLookupByLibrary.simpleMessage("Salary Day"),
+    "salaryDayHint": MessageLookupByLibrary.simpleMessage(
+      "Select the number of days in your salary cycle",
+    ),
     "sendResetLinkButton": MessageLookupByLibrary.simpleMessage(
       "Send Reset Link",
     ),
@@ -112,6 +122,18 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "sendResetLinkTitle": MessageLookupByLibrary.simpleMessage(
       "Send Reset Link",
+    ),
+    "setYourCurrencySubtitle": MessageLookupByLibrary.simpleMessage(
+      "Select the currency used for prices, payments and balances.",
+    ),
+    "setYourCurrencyTitle": MessageLookupByLibrary.simpleMessage(
+      "Choose Your Currency",
+    ),
+    "setYourSalarySubtitle": MessageLookupByLibrary.simpleMessage(
+      "Enter your salary amount and select the number of days in your salary cycle.",
+    ),
+    "setYourSalaryTitle": MessageLookupByLibrary.simpleMessage(
+      "Set Your Salary",
     ),
     "signIn": MessageLookupByLibrary.simpleMessage("Sign In"),
     "signInWithFacebook": MessageLookupByLibrary.simpleMessage(

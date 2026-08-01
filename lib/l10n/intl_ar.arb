@@ -119,5 +119,29 @@
   "updatePasswordButton": "تحديث كلمة المرور",
   "@updatePasswordButton": {},
   "updatePasswordSuccess": "تم تحديث كلمة المرور بنجاح.",
-  "@updatePasswordSuccess": {}
+  "@updatePasswordSuccess": {},
+
+
+  "setYourCurrencyTitle": "اختر عملتك",
+  "@setYourCurrencyTitle": {},
+  "setYourCurrencySubtitle": "اختر العملة المستخدمة للأسعار والدفع والرصائل.",
+  "@setYourCurrencySubtitle": {},
+  "chooseCurrency": "اختر العملة :",
+  "@chooseCurrency": {},
+  "continueButton": "استمرار",
+  "@continueButton": {},
+
+
+  "setYourSalaryTitle": "حدد راتبك",
+  "@setYourSalaryTitle": {},
+  "setYourSalarySubtitle": "أدخل مبلغ راتبك وحدد عدد الأيام في دورة راتبك.",
+  "@setYourSalarySubtitle": {},
+  "salaryAmount": "مبلغ الراتب",
+  "@salaryAmount": {},
+  "salaryAmountHint": "أدخل مبلغ راتبك",
+  "@salaryAmountHint": {},
+  "salaryDay": "يوم الراتب",
+  "@salaryDay": {},
+  "salaryDayHint": "حدد عدد الأيام في دورة راتبك",
+  "@salaryDayHint": {}
 }

@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'features/auth/presentation/manager/auth_cubit.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'features/setup/presentation/manager/setup_cubit.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +23,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (_) => getIt<AuthCubit>())],
+      providers: [
+        BlocProvider(create: (_) => getIt<AuthCubit>()),
+        BlocProvider(create: (_) => getIt<SetupCubit>()),
+        ],
       child: ScreenUtilInit(
         designSize: const Size(390, 884),
         minTextAdapt: true,

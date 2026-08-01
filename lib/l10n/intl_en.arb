@@ -119,5 +119,29 @@
   "updatePasswordButton": "Update Password",
   "@updatePasswordButton": {},
   "updatePasswordSuccess": "Password updated successfully.",
-  "@updatePasswordSuccess": {}
+  "@updatePasswordSuccess": {},
+
+
+  "setYourCurrencyTitle": "Choose Your Currency",
+  "@setYourCurrencyTitle": {},
+  "setYourCurrencySubtitle": "Select the currency used for prices, payments and balances.",
+  "@setYourCurrencySubtitle": {},
+  "chooseCurrency": "Choose Currency :",
+  "@chooseCurrency": {},
+  "continueButton": "Continue",
+  "@continueButton": {},
+
+
+  "setYourSalaryTitle": "Set Your Salary",
+  "@setYourSalaryTitle": {},
+  "setYourSalarySubtitle": "Enter your salary amount and select the number of days in your salary cycle.",
+  "@setYourSalarySubtitle": {},
+  "salaryAmount": "Salary Amount",
+  "@salaryAmount": {},
+  "salaryAmountHint": "Enter your salary amount",
+  "@salaryAmountHint": {},
+  "salaryDay": "Salary Day",
+  "@salaryDay": {},
+  "salaryDayHint": "Select the number of days in your salary cycle",
+  "@salaryDayHint": {}
 }
