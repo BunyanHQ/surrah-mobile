@@ -1,3 +1,4 @@
+import 'setup_salary.dart';
 import 'setup_currency.dart';
 import 'package:flutter/material.dart';
 import '../../manager/setup_cubit.dart';
@@ -19,7 +20,7 @@ class SetupBody extends StatelessWidget {
             Expanded(
               child: PageView(
                 controller: SetupCubit.get(context).pageController,
-                children: const [SetupCurrency()],
+                children: const [SetupCurrency(), SetupSalary()],
               ),
             ),
             _Bottom(),

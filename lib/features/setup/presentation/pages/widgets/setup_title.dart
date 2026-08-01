@@ -41,7 +41,6 @@ class SetupTitle extends StatelessWidget {
           textAlign: TextAlign.center,
           opacity: FontOpacity.medium,
         ),
-        SizedBox(height: 10.h),
       ],
     );
   }
